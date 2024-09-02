@@ -14,7 +14,7 @@
   max-width: 496px;
   width: 100%;
   box-sizing: border-box;
-  background-color: #f3f3f3;
+  background-color: #fff;
   padding: 28px 28px 36px; /* Top, right/left, and bottom */
   border-radius: 20px;
 }
@@ -38,6 +38,7 @@
   display: block;
   border: none;
   border-bottom: 1px solid;
+  background-color: transparent;
 }
 
 .modal__radio-buttons {
