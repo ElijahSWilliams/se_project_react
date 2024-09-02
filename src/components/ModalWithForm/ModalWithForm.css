@@ -21,7 +21,14 @@
 
 .modal__close {
   position: absolute;
-  top: 20px;
+  top: 22px;
+  right: 30px;
+  background: url("../../assets/Union.png") transparent no-repeat;
+  background-size: contain;
+  width: 16px;
+  height: 16px;
+  border: none;
+  cursor: pointer;
 }
 .modal__title {
   margin: 0;

@@ -6,17 +6,15 @@ function ModalWithForm() {
       <div className="modal">
         <div className="modal__content">
           <h2 className="modal__title">New Garment</h2>
-          <button type="button" className="modal__close">
-            Close
-          </button>
+          <button type="button" className="modal__close"></button>
           <form className="modal__form">
-            <label htmlFor="name" className="modal__form-label">
+            <label htmlFor="Name" className="modal__form-label">
               Name {""}
               <input
                 type="text"
                 className="modal__form-input"
                 id="name"
-                placeholder="name"
+                placeholder="Name"
               ></input>
             </label>
             <label htmlFor="imageURL" className="modal__form-label">
