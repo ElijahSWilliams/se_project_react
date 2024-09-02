@@ -1,0 +1,55 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0000004d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__content {
+  max-width: 496px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #f3f3f3;
+  padding: 28px 28px 36px; /* Top, right/left, and bottom */
+  border-radius: 20px;
+}
+
+.modal__close {
+  position: absolute;
+  top: 20px;
+}
+.modal__title {
+  margin: 0;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.modal__form-input {
+  width: 100%;
+  display: block;
+  border: none;
+  border-bottom: 1px solid;
+}
+
+.modal__radio-buttons {
+  max-width: 173px;
+  width: 100%;
+  padding: 0;
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__submit {
+  max-width: 124px;
+  height: 36px;
+}
