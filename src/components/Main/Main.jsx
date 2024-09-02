@@ -15,10 +15,10 @@ function Main({ weatherData }) {
           </p>
           <ul className="cards__list">
             {defaultClothingItems
-              .filter((item) => {
+              /*   .filter((item) => {
                 //filter item based on weather type, hot cold etc.
                 return item.weather === weatherData.type; //item.weather should equal weatherData.type value
-              })
+              }) */
               .map((item) => {
                 return <ItemCard key={item._id} item={item} />;
               })}
