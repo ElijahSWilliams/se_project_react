@@ -7,14 +7,31 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 function App() {
   const [weatherData, setWeatherData] = useState({ type: "hot" });
+  const [activeModal, setActiveModal] = useState("");
+
+  //AddButton Function
+  const handleAddClick = () => {
+    setActiveModal("add-garment");
+  };
+
+  //CLose modal function
+  const closeActiveModal = () => {
+    setActiveModal("");
+  };
+
   return (
     <div className="page">
       <div className="page__content">
-        <Header />
+        <Header handleAddClick={handleAddClick} />
         <Main weatherData={weatherData} />
         <Footer />
       </div>
-      <ModalWithForm title="New Garment" buttonText="Add Garment">
+      <ModalWithForm
+        title="New Garment"
+        buttonText="Add Garment"
+        activeModal={activeModal}
+        handleCloseModal={closeActiveModal} //set destructed value in component to the close modal function
+      >
         <label htmlFor="Name" className="modal__form-label">
           Name {""}
           <input
