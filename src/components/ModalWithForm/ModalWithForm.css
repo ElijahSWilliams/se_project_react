@@ -17,6 +17,7 @@
   background-color: #fff;
   padding: 28px 28px 36px; /* Top, right/left, and bottom */
   border-radius: 20px;
+  position: relative;
 }
 
 .modal__close {
@@ -32,6 +33,11 @@
 }
 .modal__title {
   margin: 0;
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  line-height: 20px;
+  text-align: left;
+  font-size: 16px;
 }
 
 .modal__form {
@@ -58,6 +64,7 @@
 }
 
 .modal__submit {
+  margin-top: 8px;
   max-width: 124px;
   height: 36px;
 }
