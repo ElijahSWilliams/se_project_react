@@ -4,10 +4,12 @@ import Main from "../Main/Main";
 import { useState } from "react";
 import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import ItemModal from "../ItemModal/ItemModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({ type: "hot" });
   const [activeModal, setActiveModal] = useState("");
+  const [selectedCard, setSelectedCard] = useState({});
 
   //AddButton Function
   const handleAddClick = () => {
@@ -17,6 +19,11 @@ function App() {
   //CLose modal function
   const closeActiveModal = () => {
     setActiveModal("");
+  };
+
+  const handleCardClick = (card) => {
+    setActiveModal("preview");
+    setSelectedCard();
   };
 
   return (
