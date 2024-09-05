@@ -5,7 +5,6 @@ function checkResponse(res) {
   if (!res.ok) {
     return Promise.reject(`Error: ${res.status}`);
   } else {
-    console.log(res.ok);
     return res.json();
   }
 }

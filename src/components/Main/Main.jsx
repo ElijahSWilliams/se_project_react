@@ -8,17 +8,17 @@ function Main({ weatherData, handleCardClick }) {
   return (
     <>
       <main>
-        <WeatherCard />
+        <WeatherCard weatherData={weatherData} />
         <section className="cards">
           <p className="card__text">
             Today is {weatherData.temp}&deg; F / You may want to wear:
           </p>
           <ul className="cards__list">
             {defaultClothingItems
-              /*   .filter((item) => {
+              .filter((item) => {
                 //filter item based on weather type, hot cold etc.
                 return item.weather === weatherData.type; //item.weather should equal weatherData.type value
-              }) */
+              })
               .map((item) => {
                 return (
                   <ItemCard
