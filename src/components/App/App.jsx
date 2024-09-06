@@ -44,6 +44,28 @@ function App() {
       });
   }, []);
 
+  //add extra close functions
+  useEffect(() => {
+    //declare close function
+    function handleClose(evt) {
+      if (evt.key === "Escape" || evt.target.classList.contains("modal")) {
+        closeActiveModal();
+      }
+    }
+
+    if (activeModal !== "") {
+      //if activeModal is open
+      document.addEventListener("keydown", handleClose);
+      document.addEventListener("click", handleClose);
+    }
+
+    //remove event listener on component unmount
+    return () => {
+      document.removeEventListener("keydown", handleClose);
+      document.removeEventListener("click", handleClose);
+    };
+  }, [activeModal]);
+
   return (
     <div className="page">
       <div className="page__content">
