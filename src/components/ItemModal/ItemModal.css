@@ -1,12 +1,28 @@
 .modal__image {
-  /*  width: 100%;
-  object-fit: cover;
-  margin: 0;
-  padding: 0; */
+  width: 100%;
   /* border-radius: 20px; */
 }
 
 .modal__content_type_image {
+  padding: 0;
+  /*  height: min-content; */
   object-fit: cover;
-  width: 100%;
+}
+
+.modal__caption {
+  /*  margin: 0px; */
+  margin-left: 32px;
+  margin-top: 20px;
+}
+
+.modal__weather {
+  /*  margin: 0px; */
+  margin-top: 12px;
+  margin-left: 32px;
+  margin-bottom: 32px;
+  font-family: "Cabinet Grotesk";
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
 }

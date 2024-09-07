@@ -28,6 +28,7 @@
   padding: 28px 28px 36px; /* Top, right/left, and bottom */
   border-radius: 20px;
   position: relative;
+  overflow: hidden;
 }
 
 .modal__close {
