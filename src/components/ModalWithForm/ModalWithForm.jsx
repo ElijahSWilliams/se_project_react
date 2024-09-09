@@ -6,6 +6,7 @@ function ModalWithForm({
   buttonText,
   activeModal,
   handleCloseModal,
+  isOpen,
 }) {
   return (
     <>

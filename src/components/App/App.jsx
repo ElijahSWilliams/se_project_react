@@ -54,7 +54,7 @@ function App() {
     }
 
     if (activeModal !== "") {
-      //if activeModal is open
+      //if activeModal is open or not equal to an empty string
       document.addEventListener("keydown", handleClose);
       document.addEventListener("click", handleClose);
     }
@@ -64,7 +64,7 @@ function App() {
       document.removeEventListener("keydown", handleClose);
       document.removeEventListener("click", handleClose);
     };
-  }, [activeModal]);
+  }, [activeModal]); //dependency array
 
   return (
     <div className="page">
@@ -79,7 +79,7 @@ function App() {
         activeModal={activeModal}
         handleCloseModal={closeActiveModal} //set destructed value in component to the close modal function
       >
-        <label htmlFor="Name" className="modal__form-label">
+        <label htmlFor="name" className="modal__form-label">
           Name {""}
           <input
             type="text"
@@ -100,7 +100,12 @@ function App() {
         <fieldset className="modal__radio-buttons">
           <legend className="modal__legend">Select The Weather Type:</legend>
           <label htmlFor="hot" className="modal__label modal__label_type_radio">
-            <input type="radio" className="modal__radio-input" id="hot"></input>
+            <input
+              type="radio"
+              className="modal__radio-input"
+              id="hot"
+              name="radio"
+            ></input>
             Hot
           </label>
           <label
@@ -111,6 +116,7 @@ function App() {
               type="radio"
               className="modal__radio-input"
               id="warm"
+              name="radio"
             ></input>
             Warm
           </label>
@@ -122,6 +128,7 @@ function App() {
               type="radio"
               className="modal__radio-input"
               id="cold"
+              name="radio"
             ></input>
             Cold
           </label>
