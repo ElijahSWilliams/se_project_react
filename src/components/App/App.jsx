@@ -76,7 +76,8 @@ function App() {
       <ModalWithForm
         title="New Garment"
         buttonText="Add Garment"
-        activeModal={activeModal}
+        /* activeModal={activeModal} */
+        isOpen={activeModal === "add-garment"}
         handleCloseModal={closeActiveModal} //set destructed value in component to the close modal function
       >
         <label htmlFor="name" className="modal__form-label">

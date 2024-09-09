@@ -10,11 +10,7 @@ function ModalWithForm({
 }) {
   return (
     <>
-      <div
-        className={`modal ${
-          activeModal === "add-garment" ? "modal_opened" : ""
-        }`}
-      >
+      <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
         {" "}
         {/* if activeModal is true, add modal_opned else is empty string */}
         <div className="modal__content">
