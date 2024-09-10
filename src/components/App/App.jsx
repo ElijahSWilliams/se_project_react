@@ -76,7 +76,7 @@ function App() {
       <ModalWithForm
         title="New Garment"
         buttonText="Add Garment"
-        /* activeModal={activeModal} */
+        
         isOpen={activeModal === "add-garment"}
         handleCloseModal={closeActiveModal} //set destructed value in component to the close modal function
       >
@@ -89,7 +89,7 @@ function App() {
             placeholder="Name"
           ></input>
         </label>
-        <label htmlFor="imageURL" className="modal__form-label">
+        <label htmlFor="link" className="modal__form-label">
           Image {""}
           <input
             type="url"
