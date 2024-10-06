@@ -40,10 +40,10 @@ function App() {
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
-        /* console.log(data); */
+        /*  console.log(data); */
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
-        console.log(filteredData);
+        console.log("FilteredData:" + filteredData.temperature);
       })
       .catch((err) => {
         console.error(err);

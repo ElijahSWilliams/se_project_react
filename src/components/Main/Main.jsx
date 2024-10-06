@@ -9,9 +9,8 @@ import { useContext } from "react";
 function Main({ weatherData, handleCardClick }) {
   const { currentTempUnit } = useContext(currentTempUnitContext);
   console.log(currentTempUnit);
-  console.log("WeatherData:" + weatherData.temp);
+  console.log("WeatherData:" + weatherData);
   const tempVar = weatherData?.temp?.[currentTempUnit] || 0;
-  debugger;
   console.log(tempVar);
 
   const getWeatherType = (tempVar) => {
@@ -27,7 +26,7 @@ function Main({ weatherData, handleCardClick }) {
   return (
     <>
       <main>
-        <WeatherCard weatherData={tempVar} />
+        <WeatherCard weatherData={weatherData} />
         <section className="cards">
           <p className="card__text">
             Today is {tempVar}&deg; F / You may want to wear:
