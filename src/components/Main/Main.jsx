@@ -3,15 +3,34 @@ import "./Main.css";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import { defaultClothingItems } from "../../utils/constants";
 import ItemCard from "../ItemCard/ItemCard";
+import currentTempUnitContext from "../../Context/CurrentTemperatureUnitContext";
+import { useContext } from "react";
 
 function Main({ weatherData, handleCardClick }) {
+  const { currentTempUnit } = useContext(currentTempUnitContext);
+  console.log(currentTempUnit);
+  console.log("WeatherData:" + weatherData.temp);
+  const tempVar = weatherData?.temp?.[currentTempUnit] || 0;
+  debugger;
+  console.log(tempVar);
+
+  const getWeatherType = (tempVar) => {
+    if (tempVar >= 86) {
+      return "hot";
+    } else if (tempVar >= 66) {
+      return "warm";
+    } else {
+      return "cold";
+    }
+  };
+
   return (
     <>
       <main>
-        <WeatherCard weatherData={weatherData} />
+        <WeatherCard weatherData={tempVar} />
         <section className="cards">
           <p className="card__text">
-            Today is {weatherData.temp}&deg; F / You may want to wear:
+            Today is {tempVar}&deg; F / You may want to wear:
           </p>
           <ul className="cards__list">
             {defaultClothingItems

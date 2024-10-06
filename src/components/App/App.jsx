@@ -7,7 +7,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import { filterWeatherData, getWeather } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
-
+import currentTempUnitContext from "../../Context/CurrentTemperatureUnitContext";
 function App() {
   const [weatherData, setWeatherData] = useState({
     type: "",
@@ -16,6 +16,7 @@ function App() {
   });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
+  const [currentTempUnit, setCurrentTempUnit] = useState("C");
 
   //AddButton Function
   const handleAddClick = () => {
@@ -32,12 +33,17 @@ function App() {
     setSelectedCard(card);
   };
 
+  const handleToggleUnit = () => {
+    setCurrentTempUnit(currentTempUnit === "C" ? "F" : "C");
+  };
+
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
-        console.log(data);
+        /* console.log(data); */
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
+        console.log(filteredData);
       })
       .catch((err) => {
         console.error(err);
@@ -66,80 +72,88 @@ function App() {
     };
   }, [activeModal]); //dependency array
 
+  console.log(currentTempUnit);
+
   return (
     <div className="page">
-      <div className="page__content">
-        <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-        <Main weatherData={weatherData} handleCardClick={handleCardClick} />
-        <Footer />
-      </div>
-      <ModalWithForm
-        title="New Garment"
-        buttonText="Add Garment"
-        
-        isOpen={activeModal === "add-garment"}
-        handleCloseModal={closeActiveModal} //set destructed value in component to the close modal function
+      <currentTempUnitContext.Provider
+        value={{ currentTempUnit, handleToggleUnit }}
       >
-        <label htmlFor="name" className="modal__form-label">
-          Name {""}
-          <input
-            type="text"
-            className="modal__form-input"
-            id="name"
-            placeholder="Name"
-          ></input>
-        </label>
-        <label htmlFor="link" className="modal__form-label">
-          Image {""}
-          <input
-            type="url"
-            className="modal__form-input"
-            id="link"
-            placeholder="Image URL"
-          ></input>
-        </label>
-        <fieldset className="modal__radio-buttons">
-          <legend className="modal__legend">Select The Weather Type:</legend>
-          <label htmlFor="hot" className="modal__label modal__label_type_radio">
+        <div className="page__content">
+          <Header handleAddClick={handleAddClick} weatherData={weatherData} />
+          <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+          <Footer />
+        </div>
+        <ModalWithForm
+          title="New Garment"
+          buttonText="Add Garment"
+          isOpen={activeModal === "add-garment"}
+          handleCloseModal={closeActiveModal} //set destructed value in component to the close modal function
+        >
+          <label htmlFor="name" className="modal__form-label">
+            Name {""}
             <input
-              type="radio"
-              className="modal__radio-input"
-              id="hot"
-              name="radio"
+              type="text"
+              className="modal__form-input"
+              id="name"
+              placeholder="Name"
             ></input>
-            Hot
           </label>
-          <label
-            htmlFor="warm"
-            className="modal__label modal__label_type_radio"
-          >
+          <label htmlFor="link" className="modal__form-label">
+            Image {""}
             <input
-              type="radio"
-              className="modal__radio-input"
-              id="warm"
-              name="radio"
+              type="url"
+              className="modal__form-input"
+              id="link"
+              placeholder="Image URL"
             ></input>
-            Warm
           </label>
-          <label
-            htmlFor="cold"
-            className="modal__label modal__label_type_radio"
-          >
-            <input
-              type="radio"
-              className="modal__radio-input"
-              id="cold"
-              name="radio"
-            ></input>
-            Cold
-          </label>
-        </fieldset>
-      </ModalWithForm>
-      <ItemModal
-        activeModal={activeModal}
-        card={selectedCard}
-        handleCloseModal={closeActiveModal}
-      />
+          <fieldset className="modal__radio-buttons">
+            <legend className="modal__legend">Select The Weather Type:</legend>
+            <label
+              htmlFor="hot"
+              className="modal__label modal__label_type_radio"
+            >
+              <input
+                type="radio"
+                className="modal__radio-input"
+                id="hot"
+                name="radio"
+              ></input>
+              Hot
+            </label>
+            <label
+              htmlFor="warm"
+              className="modal__label modal__label_type_radio"
+            >
+              <input
+                type="radio"
+                className="modal__radio-input"
+                id="warm"
+                name="radio"
+              ></input>
+              Warm
+            </label>
+            <label
+              htmlFor="cold"
+              className="modal__label modal__label_type_radio"
+            >
+              <input
+                type="radio"
+                className="modal__radio-input"
+                id="cold"
+                name="radio"
+              ></input>
+              Cold
+            </label>
+          </fieldset>
+        </ModalWithForm>
+        <ItemModal
+          activeModal={activeModal}
+          card={selectedCard}
+          handleCloseModal={closeActiveModal}
+        />
+      </currentTempUnitContext.Provider>
     </div>
   );
 }
