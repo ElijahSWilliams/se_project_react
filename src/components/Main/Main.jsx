@@ -14,16 +14,6 @@ function Main({ weatherData, handleCardClick }) {
   console.log("CurrentTempUnit:", currentTempUnit);
   console.log("tempVar: ", tempVar);
 
-  /*   const getWeatherType = (temperature) => {
-    if (weatherData >= 86) {
-      return "hot";
-    } else if (temperature >= 66) {
-      return "warm";
-    } else {
-      return "cold";
-    }
-  }; */
-
   return (
     <>
       <main>

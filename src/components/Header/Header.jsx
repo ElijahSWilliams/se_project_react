@@ -8,7 +8,7 @@ function Header({ handleAddClick, weatherData }) {
     month: "long",
     day: "numeric",
   });
-  console.log("Header Data:" + weatherData.city);
+  console.log("Header Data:", weatherData.city);
 
   return (
     <header className="header">
