@@ -9,6 +9,9 @@ import { filterWeatherData, getWeather } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
 import currentTempUnitContext from "../../Context/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import { Routes, Route } from "react-router-dom";
+import Profile from "../Profile/Profile";
+
 function App() {
   //State
   const [weatherData, setWeatherData] = useState({
@@ -18,7 +21,7 @@ function App() {
   });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
-  const [currentTempUnit, setCurrentTempUnit] = useState("C");
+  const [currentTempUnit, setCurrentTempUnit] = useState("F");
 
   //AddButton Function
   const handleAddClick = () => {
@@ -85,9 +88,22 @@ function App() {
       >
         <div className="page__content">
           <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-          <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main
+                  weatherData={weatherData}
+                  handleCardClick={handleCardClick}
+                />
+              }
+            />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+
           <Footer />
         </div>
+
         {activeModal === "add-garment" && (
           <AddItemModal
             handleCloseModal={closeActiveModal}
