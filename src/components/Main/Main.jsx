@@ -8,20 +8,21 @@ import { useContext } from "react";
 
 function Main({ weatherData, handleCardClick }) {
   const { currentTempUnit } = useContext(currentTempUnitContext);
-  console.log(currentTempUnit);
-  console.log("WeatherData:" + weatherData);
-  const tempVar = weatherData?.temp?.[currentTempUnit] || 0;
-  console.log(tempVar);
+  /* console.log(currentTempUnit); */
+  console.log("WeatherData:", weatherData);
+  const tempVar = weatherData?.temperature?.[currentTempUnit] || 999;
+  console.log("CurrentTempUnit:", currentTempUnit);
+  console.log("tempVar: ", tempVar);
 
-  const getWeatherType = (tempVar) => {
-    if (tempVar >= 86) {
+  /*   const getWeatherType = (temperature) => {
+    if (weatherData >= 86) {
       return "hot";
-    } else if (tempVar >= 66) {
+    } else if (temperature >= 66) {
       return "warm";
     } else {
       return "cold";
     }
-  };
+  }; */
 
   return (
     <>
@@ -29,7 +30,7 @@ function Main({ weatherData, handleCardClick }) {
         <WeatherCard weatherData={weatherData} />
         <section className="cards">
           <p className="card__text">
-            Today is {tempVar}&deg; F / You may want to wear:
+            Today is {tempVar}&deg; {currentTempUnit} / You may want to wear:
           </p>
           <ul className="cards__list">
             {defaultClothingItems

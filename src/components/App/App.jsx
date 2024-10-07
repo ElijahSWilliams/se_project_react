@@ -40,10 +40,10 @@ function App() {
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
-        /*  console.log(data); */
+        console.log("data", data);
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
-        console.log("FilteredData:" + filteredData.temperature);
+        console.log("filteredData", filteredData);
       })
       .catch((err) => {
         console.error(err);
@@ -71,8 +71,6 @@ function App() {
       document.removeEventListener("click", handleClose);
     };
   }, [activeModal]); //dependency array
-
-  console.log(currentTempUnit);
 
   return (
     <div className="page">
