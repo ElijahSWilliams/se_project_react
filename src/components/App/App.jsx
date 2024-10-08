@@ -50,6 +50,7 @@ function App() {
     getWeather(coordinates, APIkey)
       .then((data) => {
         console.log("data", data);
+        console.log(data.name);
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
         console.log("filteredData", filteredData);
@@ -98,7 +99,10 @@ function App() {
                 />
               }
             />
-            <Route path="/profile" element={<Profile handleCardClick={handleCardClick}/>} />
+            <Route
+              path="/profile"
+              element={<Profile handleCardClick={handleCardClick} />}
+            />
           </Routes>
           <Footer />
         </div>

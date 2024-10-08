@@ -19,24 +19,21 @@ export const getWeather = ({ latitude, longitude }, APIkey) => {
 
 //filters data received from API req
 export const filterWeatherData = (data) => {
-  const main = data.main;
-  const temperature = main && main.temp;
+  console.log(data);
+  const name = data.name;
+  const temperature = data.main.temp;
+  const weatherType = getWeatherType(temperature);
   const weather = {
-    /* city: "", */
+    city: name,
     temperature: {
-      F: data.main.temp,
+      F: Math.round(data.main.temp),
       C: Math.round(((data.main.temp - 32) * 5) / 9),
     },
-    /* type: "", */
+    type: weatherType,
   };
+  console.log(weather);
   return weather; //returns weather object
 };
-//Context
-/* const { currentTempUnit, handleToggleUnit } = useContext(
-  currentTempUnitContext
-);
-
-const weatherTempVar = wea; */
 
 const getWeatherType = (temperature) => {
   if (temperature >= 86) {
