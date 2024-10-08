@@ -1,0 +1,10 @@
+.sidebar {
+  display: flex;
+  max-width: 229px;
+  justify-content: space-between;
+}
+
+.sidebar-profile__image {
+  margin-bottom: auto;
+  margin-right: 16px;
+}
