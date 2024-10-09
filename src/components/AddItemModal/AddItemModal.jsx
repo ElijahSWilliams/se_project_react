@@ -1,6 +1,6 @@
 import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
   //State Variable for name field
@@ -8,7 +8,7 @@ function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
 
   const handleNameChange = (e) => {
     //pass 'e' to capture form data
-    console.log(e.target.value);
+
     setName(e.target.value);
   };
 
@@ -17,16 +17,25 @@ function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
 
   const handleLinkChange = (e) => {
     //pass 'e' to capture form data
-    console.log(e.target.value);
+
     setUrl(e.target.value);
   };
 
   const [radioValue, setRadioValue] = useState("");
 
   const handleRadioButtonChange = (e) => {
-    console.log(e.target.value);
     setRadioValue(e.target.value);
   };
+
+  //useEffect hook to clear inputs during mount
+  useEffect(() => {
+    return () => {
+      //get state of each input and set to empty string
+      setName("");
+      setUrl("");
+      setRadioValue("");
+    };
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();

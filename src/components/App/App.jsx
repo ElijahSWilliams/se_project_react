@@ -22,6 +22,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
+  const [clothingItems, setClothingItems] = useState("");
 
   //AddButton Function
   const handleAddClick = () => {
@@ -44,7 +45,11 @@ function App() {
   //form submit function
   const onAddItem = (values) => {
     console.log(values);
+    setClothingItems([values, ...clothingItems]);
+    console.log("clothingItems:", clothingItems);
   };
+
+  const handleAddItemSubmit = () => {};
 
   useEffect(() => {
     getWeather(coordinates, APIkey)
