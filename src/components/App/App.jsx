@@ -11,7 +11,7 @@ import currentTempUnitContext from "../../Context/CurrentTemperatureUnitContext"
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
-import { getItems } from "../../utils/Api";
+import { getItems, removeItem } from "../../utils/Api";
 
 function App() {
   //State
@@ -36,6 +36,7 @@ function App() {
   };
 
   const handleCardClick = (card) => {
+    console.log(card);
     setActiveModal("preview");
     setSelectedCard(card);
   };
@@ -43,14 +44,25 @@ function App() {
   const handleToggleUnit = () => {
     setCurrentTempUnit(currentTempUnit === "C" ? "F" : "C");
   };
-  //form submit function
+  //handleFormSubmit function
   const onAddItem = (values) => {
     console.log(values);
-    setClothingItems([values, ...clothingItems]);
+    setClothingItems([values, ...clothingItems]); //save item to a copy of clothingItem state array with spread operator
     console.log("clothingItems:", clothingItems);
   };
 
-  const handleAddItemSubmit = () => {};
+  const handleItemDelete = (item) => {
+    console.log("deleting");
+    console.log(item);
+    //make api call to delete card
+    removeItem(item._id)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
   //make api call to get weather on load
   useEffect(() => {
@@ -138,6 +150,7 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           handleCloseModal={closeActiveModal}
+          handleItemDelete={handleItemDelete}
         />
       </currentTempUnitContext.Provider>
     </div>

@@ -15,7 +15,9 @@ function getItems() {
   });
 }
 
+//Post Request
 function addItem() {
+  //used in function 'onAddItem' in App.jsx;
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
@@ -31,8 +33,14 @@ function addItem() {
   });
 }
 
-function removeItem() {
-  return fetch(`${baseUrl}/items/${id}`).then((res) => {
+//Delete Request
+function removeItem(id) {
+  return fetch(`${baseUrl}/items/${id}`, {
+    method: "DELETE",
+    headers: {
+      headers,
+    },
+  }).then((res) => {
     return checkResponse(res);
   });
 }
