@@ -11,6 +11,7 @@ import currentTempUnitContext from "../../Context/CurrentTemperatureUnitContext"
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
+import { getItems } from "../../utils/Api";
 
 function App() {
   //State
@@ -22,7 +23,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
-  const [clothingItems, setClothingItems] = useState("");
+  const [clothingItems, setClothingItems] = useState([]);
 
   //AddButton Function
   const handleAddClick = () => {
@@ -51,14 +52,27 @@ function App() {
 
   const handleAddItemSubmit = () => {};
 
+  //make api call to get weather on load
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
-        console.log("data", data);
-        console.log(data.name);
+        /*   console.log("data", data);
+        console.log(data.name); */
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
         console.log("filteredData", filteredData);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
+  //make api call to get items on load
+  useEffect(() => {
+    getItems()
+      .then((data) => {
+        console.log(data);
+        setClothingItems(data);
       })
       .catch((err) => {
         console.error(err);
@@ -101,6 +115,7 @@ function App() {
                 <Main
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
+                  clothingItems={clothingItems}
                 />
               }
             />
