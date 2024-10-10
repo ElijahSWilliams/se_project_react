@@ -8,10 +8,10 @@ import { useContext } from "react";
 
 function Main({ weatherData, handleCardClick, clothingItems }) {
   const { currentTempUnit } = useContext(currentTempUnitContext);
-  console.log("WeatherData:", weatherData);
+  /*   console.log("WeatherData:", weatherData); */
   const tempVar = weatherData?.temperature?.[currentTempUnit] || 999;
-  console.log("CurrentTempUnit:", currentTempUnit);
-  console.log("tempVar: ", tempVar);
+  /*  console.log("CurrentTempUnit:", currentTempUnit);
+  console.log("tempVar: ", tempVar); */
 
   return (
     <>

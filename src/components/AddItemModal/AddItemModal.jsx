@@ -12,7 +12,7 @@ function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
   };
 
   //State variable for Url field
-  const [link, setUrl] = useState("");
+  const [imageUrl, setUrl] = useState("");
 
   const handleLinkChange = (e) => {
     //pass 'e' to capture form data
@@ -37,7 +37,7 @@ function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItem({ name, link, radioValue });
+    onAddItem({ name, imageUrl, radioValue });
   };
 
   return (
@@ -59,14 +59,14 @@ function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
           onChange={handleNameChange}
         ></input>
       </label>
-      <label htmlFor="link" className="modal__form-label">
+      <label htmlFor="imageUrl" className="modal__form-label">
         Image {""}
         <input
           type="url"
           className="modal__form-input"
           id="link"
           placeholder="Image URL"
-          value={link} //pass 'link' to value to connect it to the 'link' state variable
+          value={imageUrl} //pass 'imageUrl' to value to connect it to the 'imageUrl' state variable
           onChange={handleLinkChange}
         ></input>
       </label>

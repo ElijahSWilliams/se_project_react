@@ -6,8 +6,7 @@ import { useContext } from "react";
 function WeatherCard({ weatherData }) {
   const { currentTempUnit } = useContext(currentTempUnitContext);
   const tempVar = weatherData?.temperature?.[currentTempUnit];
-  console.log(tempVar);
-  /*   console.log(weatherData.temperature[currentTempUnit]); */
+
   return (
     <>
       <section className="weather-card">

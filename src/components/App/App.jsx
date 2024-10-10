@@ -11,7 +11,7 @@ import currentTempUnitContext from "../../Context/CurrentTemperatureUnitContext"
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
-import { getItems, removeItem } from "../../utils/Api";
+import { addItem, getItems, removeItem } from "../../utils/Api";
 
 function App() {
   //State
@@ -44,11 +44,18 @@ function App() {
   const handleToggleUnit = () => {
     setCurrentTempUnit(currentTempUnit === "C" ? "F" : "C");
   };
+
   //handleFormSubmit function
   const onAddItem = (values) => {
     console.log(values);
     setClothingItems([values, ...clothingItems]); //save item to a copy of clothingItem state array with spread operator
     console.log("clothingItems:", clothingItems);
+    //api call
+    addItem(values).then((data) => {
+      console.log(data);
+    });
+    //close Modal
+    closeActiveModal();
   };
 
   const handleItemDelete = (item) => {
@@ -58,6 +65,12 @@ function App() {
     removeItem(item._id)
       .then((data) => {
         console.log(data);
+        //filter
+        setClothingItems((prevItem) => {
+          prevItem.filter((item) => item._id !== itemId);
+        });
+        //close method
+        closeActiveModal();
       })
       .catch((err) => {
         console.error(err);
@@ -68,11 +81,8 @@ function App() {
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
-        /*   console.log("data", data);
-        console.log(data.name); */
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
-        console.log("filteredData", filteredData);
       })
       .catch((err) => {
         console.error(err);

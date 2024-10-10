@@ -19,7 +19,6 @@ export const getWeather = ({ latitude, longitude }, APIkey) => {
 
 //filters data received from API req
 export const filterWeatherData = (data) => {
-  console.log(data);
   const name = data.name;
   const temperature = data.main.temp;
   const weatherType = getWeatherType(temperature);
@@ -31,7 +30,6 @@ export const filterWeatherData = (data) => {
     },
     type: weatherType,
   };
-  console.log(weather);
   return weather; //returns weather object
 };
 

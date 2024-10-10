@@ -16,7 +16,7 @@ function getItems() {
 }
 
 //Post Request
-function addItem() {
+function addItem({ name, imageUrl, weather }) {
   //used in function 'onAddItem' in App.jsx;
   return fetch(`${baseUrl}/items`, {
     method: "POST",

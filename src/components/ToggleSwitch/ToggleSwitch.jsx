@@ -7,8 +7,6 @@ function ToggleSwitch() {
     currentTempUnitContext
   );
 
-  console.log(currentTempUnit);
-
   return (
     <label className="toggle-switch">
       <input type="checkbox" className="switch" onChange={handleToggleUnit} />
