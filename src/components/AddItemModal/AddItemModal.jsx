@@ -70,7 +70,7 @@ function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
           onChange={handleLinkChange}
         ></input>
       </label>
-      <fieldset className="modal__radio-buttons" onSubmit={handleSubmit}>
+      <fieldset className="modal__radio-buttons">
         <legend className="modal__legend">Select The Weather Type:</legend>
         <label htmlFor="hot" className="modal__label modal__label_type_radio">
           <input
