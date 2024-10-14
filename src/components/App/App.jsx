@@ -70,8 +70,8 @@ function App() {
       .then((data) => {
         console.log(data);
         //filter
-        setClothingItems((prevItem) => {
-          prevItem.filter((item) => item._id !== itemId);
+        setClothingItems((prevItems) => {
+          return prevItems.filter((prevItem) => prevItem._id !== item._id);
         });
         //close method
         closeActiveModal();
