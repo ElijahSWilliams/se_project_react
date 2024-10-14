@@ -50,8 +50,9 @@ function App() {
     //update state
     setClothingItems([values, ...clothingItems]); //save item to a copy of clothingItem state array with spread operator
     //api call
-    addItem(values).then((data) => {
-      console.log(data);
+    addItem(values).then((newItem) => {
+      console.log(newItem);
+      setClothingItems((prevItems) => [...prevItems, newItem]);
     });
     //close Modal
     closeActiveModal();
