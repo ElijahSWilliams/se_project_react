@@ -18,7 +18,7 @@ function getItems() {
 }
 
 //Post Request
-function addItem({ name, imageUrl, weather }) {
+function addItem({ name, imageUrl, radioValue }) {
   //used in function 'onAddItem' in App.jsx;
   return fetch(`${baseUrl}/items`, {
     method: "POST",
@@ -28,7 +28,7 @@ function addItem({ name, imageUrl, weather }) {
     body: JSON.stringify({
       name: name,
       imageUrl: imageUrl,
-      weather: weather,
+      weather: radioValue,
     }),
   }).then((res) => {
     return checkResponse(res);

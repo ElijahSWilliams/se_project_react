@@ -49,7 +49,6 @@ function App() {
   const onAddItem = (values) => {
     console.log(values);
     setClothingItems([values, ...clothingItems]); //save item to a copy of clothingItem state array with spread operator
-    console.log("clothingItems:", clothingItems);
     //api call
     addItem(values).then((data) => {
       console.log(data);
@@ -57,6 +56,11 @@ function App() {
     //close Modal
     closeActiveModal();
   };
+
+  //useEffect to log updated clothingItems
+  useEffect(() => {
+    console.log(clothingItems);
+  }, [clothingItems]);
 
   const handleItemDelete = (item) => {
     console.log("deleting");

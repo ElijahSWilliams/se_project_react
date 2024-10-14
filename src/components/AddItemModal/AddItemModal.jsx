@@ -8,6 +8,7 @@ function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
 
   const handleNameChange = (e) => {
     //pass 'e' to capture form data
+
     setName(e.target.value);
   };
 
@@ -16,6 +17,7 @@ function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
 
   const handleLinkChange = (e) => {
     //pass 'e' to capture form data
+
     setUrl(e.target.value);
   };
 
@@ -37,6 +39,9 @@ function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("name:", name);
+    console.log("ImageUrl:", imageUrl);
+    console.log("Weather:", radioValue);
     onAddItem({ name, imageUrl, radioValue });
   };
 
