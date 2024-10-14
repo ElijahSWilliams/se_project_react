@@ -8,6 +8,18 @@
   max-width: 1360px;
 }
 
+.clothes-section__header {
+  display: flex;
+}
+
+.clothes-section__button {
+  background: transparent;
+  border: none;
+  margin-left: 20px;
+  color: #000;
+  opacity: 60%;
+}
+
 .card {
   border-radius: 50px;
 }
