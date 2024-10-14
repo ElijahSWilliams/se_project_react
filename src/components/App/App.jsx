@@ -47,7 +47,7 @@ function App() {
 
   //handleFormSubmit function
   const onAddItem = (values) => {
-    console.log(values);
+    //update state
     setClothingItems([values, ...clothingItems]); //save item to a copy of clothingItem state array with spread operator
     //api call
     addItem(values).then((data) => {
