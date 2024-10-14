@@ -1,16 +1,19 @@
 import "./ClothesSection.css";
 import { defaultClothingItems } from "../../utils/constants";
 import ItemCard from "../ItemCard/ItemCard";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function ClothesSection({ handleCardClick }) {
+function ClothesSection({ handleCardClick, handleAddClick, clothingItems }) {
   return (
     <div className="clothes-section">
       <div className="clothes-section__header">
         <p>Your Items</p>
-        <button className="clothes-section__button">+ Add New</button>
+        <button className="clothes-section__button" onClick={handleAddClick}>
+          + Add New
+        </button>
       </div>
       <ul className="clothes-section__list">
-        {defaultClothingItems.map((item) => {
+        {clothingItems.map((item) => {
           return (
             <ItemCard
               key={item._id}

@@ -147,7 +147,13 @@ function App() {
             />
             <Route
               path="/profile"
-              element={<Profile handleCardClick={handleCardClick} />}
+              element={
+                <Profile
+                  handleCardClick={handleCardClick}
+                  handleAddClick={handleAddClick}
+                  clothingItems={clothingItems}
+                />
+              }
             />
           </Routes>
           <Footer />
