@@ -47,12 +47,12 @@ function App() {
 
   //handleFormSubmit function
   const onAddItem = (values) => {
-    //update state
+    //update state locally
     setClothingItems([values, ...clothingItems]); //save item to a copy of clothingItem state array with spread operator
     //api call
     addItem(values).then((newItem) => {
       console.log(newItem);
-      setClothingItems((prevItems) => [...prevItems, newItem]);
+      setClothingItems((prevItems) => [...prevItems, newItem]); //update state from server
     });
     //close Modal
     closeActiveModal();
