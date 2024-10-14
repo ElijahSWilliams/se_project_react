@@ -23,7 +23,7 @@ function addItem({ name, imageUrl, radioValue }) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
-      headers: headers,
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       name: name,
