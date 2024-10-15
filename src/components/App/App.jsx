@@ -7,7 +7,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import { filterWeatherData, getWeather } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
-import currentTempUnitContext from "../../Context/CurrentTemperatureUnitContext";
+import CurrentTempUnitContext from "../../Context/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
@@ -130,7 +130,7 @@ function App() {
 
   return (
     <div className="page">
-      <currentTempUnitContext.Provider
+      <CurrentTempUnitContext.Provider
         value={{ currentTempUnit, handleToggleUnit }}
       >
         <div className="page__content">
@@ -173,7 +173,7 @@ function App() {
           handleCloseModal={closeActiveModal}
           handleItemDelete={handleItemDelete}
         />
-      </currentTempUnitContext.Provider>
+      </CurrentTempUnitContext.Provider>
     </div>
   );
 }

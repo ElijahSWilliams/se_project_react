@@ -1,13 +1,5 @@
 //3b6ac840b21de2144ed7e6a163c45317
-
-function checkResponse(res) {
-  //function to check response from api
-  if (!res.ok) {
-    return Promise.reject(`Error: ${res.status}`);
-  } else {
-    return res.json();
-  }
-}
+import checkResponse from "./Api";
 
 //function to make api req
 export const getWeather = ({ latitude, longitude }, APIkey) => {

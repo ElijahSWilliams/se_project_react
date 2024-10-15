@@ -3,7 +3,7 @@ const headers = {
   "Content-Type": "application/json",
 };
 
-function checkResponse(res) {
+export default function checkResponse(res) {
   if (!res.ok) {
     return Promise.reject(`Error: ${res.status}`);
   } else {
