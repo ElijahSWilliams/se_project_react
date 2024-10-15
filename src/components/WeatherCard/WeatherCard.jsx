@@ -8,18 +8,16 @@ function WeatherCard({ weatherData }) {
   const tempVar = weatherData?.temperature?.[currentTempUnit];
 
   return (
-    <>
-      <section className="weather-card">
-        <p className="weather-card__temp">
-          {tempVar}&deg; {currentTempUnit}
-        </p>
-        <img
-          className="weather-card__image"
-          src={sunny}
-          alt="weather image"
-        ></img>
-      </section>
-    </>
+    <section className="weather-card">
+      <p className="weather-card__temp">
+        {tempVar}&deg; {currentTempUnit}
+      </p>
+      <img
+        className="weather-card__image"
+        src={sunny}
+        alt="weather image"
+      ></img>
+    </section>
   );
 }
 
