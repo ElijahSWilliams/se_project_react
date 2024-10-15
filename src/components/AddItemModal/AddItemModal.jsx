@@ -62,7 +62,7 @@ function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
           onChange={handleNameChange}
         ></input>
       </label>
-      <label htmlFor="imageUrl" className="modal__form-label">
+      <label className="modal__form-label">
         Image {""}
         <input
           type="url"
