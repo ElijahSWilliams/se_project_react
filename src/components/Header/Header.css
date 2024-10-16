@@ -40,4 +40,10 @@
   .header {
     flex-wrap: wrap;
   }
+
+  .header__date {
+    max-width: 128px;
+    margin: 0px;
+    font-size: 16px;
+  }
 }
