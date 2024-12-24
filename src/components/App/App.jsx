@@ -12,6 +12,11 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import { addItem, getItems, removeItem } from "../../utils/Api";
+import LoginContext from "../../Context/LoginContext";
+import ProtectedRoute from "../ProtectedRoute/ProtectRoute";
+import RegisterModal from "../RegisterModal/RegisterModal";
+import { signIn, signUp } from "../../utils/AUTH";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   //State
@@ -24,10 +29,20 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   //AddButton Function
   const handleAddClick = () => {
     setActiveModal("add-garment");
+  };
+
+  //LoginModal
+  const handleOpenLoginModal = () => {
+    setActiveModal("login-modal");
+  };
+
+  const handleOpenRegisterModal = () => {
+    setActiveModal("register-modal");
   };
 
   //CLose modal function
@@ -130,6 +145,35 @@ function App() {
     };
   }, [activeModal]); //dependency array
 
+  //Registration Function
+  const handleRegistration = (userData) => {
+    signUp(userData)
+      .then((res) => {
+        console.log("Registation Data:", res); /* Display data in console */
+        setIsLoggedIn(true); /* Log user In */
+        closeActiveModal(); /* close modal Window */
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  //Authorization Function
+  const handleLogIn = (userData) => {
+    const navigate = useNavigate(); //call useNavigate to get the navigate function
+
+    signIn(userData)
+      .then((res) => {
+        console.log(res);
+        setIsLoggedIn(true); /* Log user in */
+        localStorage.setItem("jwt", res.token); //Stores the jwt to localoStorage
+        navigate("/profile"); /* Navigate user to profile */
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   return (
     <div className="page">
       <CurrentTempUnitContext.Provider
@@ -137,28 +181,35 @@ function App() {
       >
         <div className="page__content">
           <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Main
-                  weatherData={weatherData}
-                  handleCardClick={handleCardClick}
-                  clothingItems={clothingItems}
-                />
-              }
-            />
-            <Route
-              path="/profile"
-              element={
-                <Profile
-                  handleCardClick={handleCardClick}
-                  handleAddClick={handleAddClick}
-                  clothingItems={clothingItems}
-                />
-              }
-            />
-          </Routes>
+          <LoginContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Main
+                    weatherData={weatherData}
+                    handleCardClick={handleCardClick}
+                    clothingItems={clothingItems}
+                  />
+                }
+              />{" "}
+              {/* End Main */}
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    {/* Protect Profile Route  */}
+                    <Profile
+                      handleCardClick={handleCardClick}
+                      handleAddClick={handleAddClick}
+                      clothingItems={clothingItems}
+                    />
+                  </ProtectedRoute>
+                }
+              />
+              {/* End /profile */}
+            </Routes>
+          </LoginContext.Provider>
           <Footer />
         </div>
 
@@ -167,6 +218,13 @@ function App() {
             handleCloseModal={closeActiveModal}
             isOpen={activeModal === "add-garment"}
             onAddItem={onAddItem}
+          />
+        )}
+
+        {activeModal === "register-modal" && (
+          <RegisterModal
+            handleCloseModal={closeActiveModal}
+            isOpen={activeModal === "register-modal"}
           />
         )}
         <ItemModal
