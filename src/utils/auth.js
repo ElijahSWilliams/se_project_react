@@ -29,4 +29,14 @@ function signIn({ email, password }) {
   });
 }
 
+function checkToken(token) {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+}
+
 export { signUp, signIn };

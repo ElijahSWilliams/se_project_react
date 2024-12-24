@@ -145,6 +145,16 @@ function App() {
     };
   }, [activeModal]); //dependency array
 
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+
+    if (token) {
+      console.log("token found:", token);
+    } else if (!token) {
+      console.log("No Token Found");
+    }
+  }, []);
+
   //Registration Function
   const handleRegistration = (userData) => {
     signUp(userData)
