@@ -36,6 +36,8 @@ function checkToken(token) {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
+  }).then((res) => {
+    return checkResponse(res);
   });
 }
 
