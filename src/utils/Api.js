@@ -18,12 +18,13 @@ function getItems() {
 }
 
 //Post Request
-function addItem({ name, imageUrl, radioValue }) {
+function addItem({ name, imageUrl, radioValue }, token) {
   //used in function 'onAddItem' in App.jsx;
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       name: name,
@@ -36,11 +37,12 @@ function addItem({ name, imageUrl, radioValue }) {
 }
 
 //Delete Request
-function removeItem(id) {
+function removeItem(id, token) {
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {
       headers,
+      authorization: `Bearer ${token}`,
     },
   }).then((res) => {
     return checkResponse(res);

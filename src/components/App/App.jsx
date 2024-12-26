@@ -12,14 +12,14 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import { addItem, getItems, removeItem } from "../../utils/Api";
-import LoginContext from "../../Context/LoginContext";
+import CurrentUserContext from "../../Context/CurrentUserContext";
 import ProtectedRoute from "../ProtectedRoute/ProtectRoute";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import { signIn, signUp } from "../../utils/AUTH";
 import { useNavigate } from "react-router-dom";
 
 function App() {
-  //State
+  //State Variables
   const [weatherData, setWeatherData] = useState({
     type: "",
     temp: 999,
@@ -30,7 +30,9 @@ function App() {
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const [currentUser, setCurrentUser] = useState(null);
+  //////////////////////////////////
+  //Functions
   //AddButton Function
   const handleAddClick = () => {
     setActiveModal("add-garment");
@@ -157,7 +159,7 @@ function App() {
 
   //Registration Function
   const handleRegistration = (userData) => {
-    signUp(userData)
+    signUp(userData) //call signup function from auth.js
       .then((res) => {
         console.log("Registation Data:", res); /* Display data in console */
         setIsLoggedIn(true); /* Log user In */
@@ -172,7 +174,7 @@ function App() {
   const handleLogIn = (userData) => {
     const navigate = useNavigate(); //call useNavigate to get the navigate function
 
-    signIn(userData)
+    signIn(userData) //call signIn function from auth.js
       .then((res) => {
         console.log(res);
         setIsLoggedIn(true); /* Log user in */
@@ -190,8 +192,8 @@ function App() {
         value={{ currentTempUnit, handleToggleUnit }}
       >
         <div className="page__content">
-          <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-          <LoginContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+          <CurrentUserContext.Provider value={currentUser}>
+            <Header handleAddClick={handleAddClick} weatherData={weatherData} />
             <Routes>
               <Route
                 path="/"
@@ -219,7 +221,7 @@ function App() {
               />
               {/* End /profile */}
             </Routes>
-          </LoginContext.Provider>
+          </CurrentUserContext.Provider>
           <Footer />
         </div>
 
