@@ -41,4 +41,4 @@ function checkToken(token) {
   });
 }
 
-export { signUp, signIn };
+export { signUp, signIn, checkToken };

@@ -47,7 +47,7 @@ function Header({ handleAddClick, weatherData }) {
             <img className="header__avatar" src={avatar} alt="User Image"></img> //Render Avatar
           ) : (
             /* If Avatar Not Provided */
-            <div className="placeHolder__image">{firstLetter}</div> //Render FirstLetter of Username
+            <div className="placeholder__image">{firstLetter}</div> //Render FirstLetter of Username
           )}{" "}
           {/* End Avatar Conditional Statement */}
         </div>

@@ -2,30 +2,36 @@ import "./RegisterModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useEffect, useState } from "react";
 
-function RegisterModal({ handleCloseModal, isOpen }) {
-  //State Variable for name field
+function RegisterModal({ handleCloseModal, isOpen, onAddItem }) {
+  //State Variable for fields
   const [name, setName] = useState("");
-
-  const handleEmailChange = (e) => {
-    //pass 'e' to capture form data
-    setName(e.target.value);
-  };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  //Update field info
+  const handleNameChange = (e) => setName(e.target.value);
+  const handleEmailChange = (e) => setEmail(e.target.value);
+  const handlePasswordChange = (e) => setPassword(e.target.value);
+  const handleImageUrlChange = (e) => setImageUrl(e.target.value);
 
   //useEffect hook to clear inputs during mount
   useEffect(() => {
     return () => {
       //get state of each input and set to empty string
       setName("");
-      setUrl("");
-      setRadioValue("");
+      setEmail("");
+      setPassword("");
+      setImageUrl("");
     };
-  }, []);
+  }, [isOpen]); //Run useEffect only when modal opens or closes
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("email:", email);
     console.log("ImageUrl:", imageUrl);
-    onAddItem({ name, imageUrl, radioValue });
+    console.log("Name:", name);
+    console.log("password:", password);
+    onAddItem({ name, email, imageUrl, password }); //pass information to submit function
   };
 
   return (
@@ -43,8 +49,8 @@ function RegisterModal({ handleCloseModal, isOpen }) {
           className="modal__form-input"
           id="email"
           placeholder="Email"
-          value={name}
-          onChange={handleNameChange}
+          value={email}
+          onChange={handleEmailChange}
         ></input>
       </label>
       <label className="modal__form-label">
@@ -54,46 +60,32 @@ function RegisterModal({ handleCloseModal, isOpen }) {
           className="modal__form-input"
           id="password"
           placeholder="Enter Password"
-          value={imageUrl} //pass 'imageUrl' to value to connect it to the 'imageUrl' state variable
-          onChange={handleLinkChange}
+          value={password}
+          onChange={handlePasswordChange}
         ></input>
       </label>
-      <fieldset className="modal__radio-buttons">
-        <legend className="modal__legend">Select The Weather Type:</legend>
-        <label htmlFor="hot" className="modal__label modal__label_type_radio">
-          <input
-            type="radio"
-            className="modal__radio-input"
-            id="hot"
-            name="radio"
-            value="hot"
-            onChange={handleRadioButtonChange}
-          ></input>
-          Hot
-        </label>
-        <label htmlFor="warm" className="modal__label modal__label_type_radio">
-          <input
-            type="radio"
-            className="modal__radio-input"
-            id="warm"
-            name="radio"
-            value="warm"
-            onChange={handleRadioButtonChange}
-          ></input>
-          Warm
-        </label>
-        <label htmlFor="cold" className="modal__label modal__label_type_radio">
-          <input
-            type="radio"
-            className="modal__radio-input"
-            id="cold"
-            name="radio"
-            value="cold"
-            onChange={handleRadioButtonChange}
-          ></input>
-          Cold
-        </label>
-      </fieldset>
+      <label className="modal__form-label">
+        Name {""}
+        <input
+          type="text"
+          className="modal__form-input"
+          id="name"
+          placeholder="Enter Name"
+          value={name}
+          onChange={handleNameChange}
+        ></input>
+      </label>
+      <label className="modal__form-label">
+        Avatar Url {""}
+        <input
+          type="url"
+          className="modal__form-input"
+          id="link"
+          placeholder="Enter Url"
+          value={imageUrl} //pass 'imageUrl' to value to connect it to the 'imageUrl' state variable
+          onChange={handleImageUrlChange}
+        ></input>
+      </label>
     </ModalWithForm>
   );
 }

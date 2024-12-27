@@ -36,6 +36,9 @@
   color: black;
 }
 
+.placeholder__image {
+}
+
 @media screen and (max-width: 425px) {
   .header {
     flex-wrap: wrap;
