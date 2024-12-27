@@ -15,7 +15,7 @@ import { addItem, getItems, removeItem } from "../../utils/Api";
 import CurrentUserContext from "../../Context/CurrentUserContext";
 import ProtectedRoute from "../ProtectedRoute/ProtectRoute";
 import RegisterModal from "../RegisterModal/RegisterModal";
-import { signIn, signUp } from "../../utils/AUTH";
+import { checkToken, signIn, signUp } from "../../utils/AUTH";
 import { useNavigate } from "react-router-dom";
 import LoginModal from "../LoginModal/LoginModal";
 
@@ -154,6 +154,10 @@ function App() {
 
     if (token) {
       console.log("token found:", token);
+      checkToken(token).then((userData) => {
+        setCurrentUser(userData);
+        setIsLoggedIn(true);
+      });
     } else if (!token) {
       console.log("No Token Found");
     }
@@ -175,6 +179,7 @@ function App() {
 
   //Authorization Function
   const handleLogIn = (userData) => {
+    console.log("HandleLogin Response");
     const navigate = useNavigate(); //call useNavigate to get the navigate function
 
     signIn(userData) //call signIn function from auth.js
@@ -246,7 +251,7 @@ function App() {
           <RegisterModal
             handleCloseModal={closeActiveModal}
             handleOpenRegisterModal={handleOpenRegisterModal}
-            signUp={signUp}
+            handleLogIn={handleLogIn}
             isOpen={activeModal === "register-modal"}
           />
         )}
@@ -255,7 +260,7 @@ function App() {
           <LoginModal
             handleCloseModal={closeActiveModal}
             handleOpenLogin={handleOpenLoginModal}
-            signIn={signIn}
+            handleLogIn={handleLogIn}
             isOpen={activeModal === "login-modal"}
           />
         )}

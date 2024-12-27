@@ -2,7 +2,7 @@ import "./RegisterModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useEffect, useState } from "react";
 
-function RegisterModal({ handleCloseModal, signUp, isOpen }) {
+function RegisterModal({ handleCloseModal, handleRegistration, isOpen }) {
   //State Variable for fields
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -31,7 +31,7 @@ function RegisterModal({ handleCloseModal, signUp, isOpen }) {
     console.log("ImageUrl:", avatar);
     console.log("Name:", name);
     console.log("password:", password);
-    signUp({ name, email, avatar, password }); //pass information to submit function
+    /* handleRegistration({ name, email, avatar, password }) */ //pass information to submit function
   };
 
   return (
