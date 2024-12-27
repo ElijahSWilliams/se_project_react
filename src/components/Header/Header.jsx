@@ -6,7 +6,12 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import CurrentUserContext from "../../Context/CurrentUserContext";
 
-function Header({ handleAddClick, weatherData }) {
+function Header({
+  handleAddClick,
+  handleOpenLoginModal,
+  handleOpenRegisterModal,
+  weatherData,
+}) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -38,6 +43,20 @@ function Header({ handleAddClick, weatherData }) {
         className="header__add-clothes-btn"
       >
         + Add Clothes
+      </button>
+      <button
+        type="button"
+        onClick={handleOpenRegisterModal}
+        className="header__add-clothes-btn"
+      >
+        Sign Up
+      </button>
+      <button
+        type="button"
+        onClick={handleOpenLoginModal}
+        className="header__add-clothes-btn"
+      >
+        Log In
       </button>
       <Link to="/profile" className="header__link">
         <div className="header__user-container">

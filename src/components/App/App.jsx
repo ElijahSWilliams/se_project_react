@@ -17,6 +17,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectRoute";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import { signIn, signUp } from "../../utils/AUTH";
 import { useNavigate } from "react-router-dom";
+import LoginModal from "../LoginModal/LoginModal";
 
 function App() {
   //State Variables
@@ -40,10 +41,12 @@ function App() {
 
   //LoginModal
   const handleOpenLoginModal = () => {
+    console.log("Open Login");
     setActiveModal("login-modal");
   };
 
   const handleOpenRegisterModal = () => {
+    console.log("Sign up");
     setActiveModal("register-modal");
   };
 
@@ -193,7 +196,12 @@ function App() {
       >
         <div className="page__content">
           <CurrentUserContext.Provider value={currentUser}>
-            <Header handleAddClick={handleAddClick} weatherData={weatherData} />
+            <Header
+              handleAddClick={handleAddClick}
+              handleOpenLoginModal={handleOpenLoginModal}
+              handleOpenRegisterModal={handleOpenRegisterModal}
+              weatherData={weatherData}
+            />
             <Routes>
               <Route
                 path="/"
@@ -236,9 +244,19 @@ function App() {
         {activeModal === "register-modal" && (
           <RegisterModal
             handleCloseModal={closeActiveModal}
+            handleOpenRegisterModal={handleOpenRegisterModal}
             isOpen={activeModal === "register-modal"}
           />
         )}
+
+        {activeModal === "login-modal" && (
+          <LoginModal
+            handleCloseModal={closeActiveModal}
+            handleOpenLogin={handleOpenLoginModal}
+            isOpen={activeModal === "login-modal"}
+          />
+        )}
+
         <ItemModal
           activeModal={activeModal}
           card={selectedCard}

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import LoginContext from "../../Context/CurrentUserContext";
+import CurrentUserContext from "../../Context/CurrentUserContext";
 
 //This function requires authorization to render the protected route
 export function ProtectedRoute({ children, anonymous = false }) {
@@ -13,8 +14,8 @@ export function ProtectedRoute({ children, anonymous = false }) {
     return <Navigate to={from} />;
   }
 
-  //retrieve isLoggedIN from LoginContext Value
-  const { isLoggedIn } = useContext(LoginContext);
+  //retrieve isLoggedIN from CurrentUserContext Value
+  const { isLoggedIn } = useContext(CurrentUserContext);
 
   // If a user is not logged in and tries to access a route that
   // requires authorization, we redirect them to the /login route.

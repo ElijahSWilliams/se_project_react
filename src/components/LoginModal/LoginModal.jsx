@@ -4,28 +4,31 @@ import { useEffect, useState } from "react";
 
 function LoginModal({ handleCloseModal, isOpen }) {
   //State Variable for name field
-  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleEmailChange = (e) => {
     //pass 'e' to capture form data
-    setName(e.target.value);
+    setEmail(e.target.value);
+  };
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
   };
 
   //useEffect hook to clear inputs during mount
   useEffect(() => {
     return () => {
       //get state of each input and set to empty string
-      setName("");
-      setUrl("");
-      setRadioValue("");
+      setEmail("");
+      setPassword("");
     };
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("email:", email);
-    console.log("ImageUrl:", imageUrl);
-    onAddItem({ name, imageUrl, radioValue });
+    console.log("password:", password);
+    /*  console.log("ImageUrl:", imageUrl); */
   };
 
   return (
@@ -43,8 +46,8 @@ function LoginModal({ handleCloseModal, isOpen }) {
           className="modal__form-input"
           id="email"
           placeholder="Email"
-          value={name}
-          onChange={handleNameChange}
+          value={email}
+          onChange={handleEmailChange}
         ></input>
       </label>
       <label className="modal__form-label">
@@ -54,48 +57,12 @@ function LoginModal({ handleCloseModal, isOpen }) {
           className="modal__form-input"
           id="password"
           placeholder="Enter Password"
-          value={imageUrl} //pass 'imageUrl' to value to connect it to the 'imageUrl' state variable
-          onChange={handleLinkChange}
+          value={password} //pass 'imageUrl' to value to connect it to the 'imageUrl' state variable
+          onChange={handlePasswordChange}
         ></input>
       </label>
-      <fieldset className="modal__radio-buttons">
-        <legend className="modal__legend">Select The Weather Type:</legend>
-        <label htmlFor="hot" className="modal__label modal__label_type_radio">
-          <input
-            type="radio"
-            className="modal__radio-input"
-            id="hot"
-            name="radio"
-            value="hot"
-            onChange={handleRadioButtonChange}
-          ></input>
-          Hot
-        </label>
-        <label htmlFor="warm" className="modal__label modal__label_type_radio">
-          <input
-            type="radio"
-            className="modal__radio-input"
-            id="warm"
-            name="radio"
-            value="warm"
-            onChange={handleRadioButtonChange}
-          ></input>
-          Warm
-        </label>
-        <label htmlFor="cold" className="modal__label modal__label_type_radio">
-          <input
-            type="radio"
-            className="modal__radio-input"
-            id="cold"
-            name="radio"
-            value="cold"
-            onChange={handleRadioButtonChange}
-          ></input>
-          Cold
-        </label>
-      </fieldset>
     </ModalWithForm>
   );
 }
 
-export default AddItemModal;
+export default LoginModal;
