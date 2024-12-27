@@ -3,7 +3,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useEffect, useState } from "react";
 import { signUp } from "../../utils/AUTH";
 
-function RegisterModal({ handleCloseModal, handleSignUp, isOpen }) {
+function RegisterModal({ handleCloseModal, signUp, isOpen }) {
   //State Variable for fields
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

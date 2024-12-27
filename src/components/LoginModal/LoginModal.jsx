@@ -1,8 +1,9 @@
 import "./LoginModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useEffect, useState } from "react";
+import { signIn } from "../../utils/AUTH";
 
-function LoginModal({ handleCloseModal, isOpen }) {
+function LoginModal({ handleCloseModal, isOpen, signIn }) {
   //State Variable for name field
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,6 +30,7 @@ function LoginModal({ handleCloseModal, isOpen }) {
     console.log("email:", email);
     console.log("password:", password);
     /*  console.log("ImageUrl:", imageUrl); */
+    signIn({ email, password });
   };
 
   return (
