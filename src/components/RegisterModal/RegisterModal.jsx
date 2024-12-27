@@ -8,12 +8,12 @@ function RegisterModal({ handleCloseModal, handleSignUp, isOpen }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [avatar, setAvatar] = useState("");
   //Update field info
   const handleNameChange = (e) => setName(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
-  const handleImageUrlChange = (e) => setImageUrl(e.target.value);
+  const handleAvatarChange = (e) => setAvatar(e.target.value);
 
   //useEffect hook to clear inputs during mount
   useEffect(() => {
@@ -22,17 +22,17 @@ function RegisterModal({ handleCloseModal, handleSignUp, isOpen }) {
       setName("");
       setEmail("");
       setPassword("");
-      setImageUrl("");
+      setAvatar("");
     };
   }, [isOpen]); //Run useEffect only when modal opens or closes
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("email:", email);
-    console.log("ImageUrl:", imageUrl);
+    console.log("ImageUrl:", avatar);
     console.log("Name:", name);
     console.log("password:", password);
-    signUp({ name, email, imageUrl, password }); //pass information to submit function
+    signUp({ name, email, avatar, password }); //pass information to submit function
   };
 
   return (
@@ -83,8 +83,8 @@ function RegisterModal({ handleCloseModal, handleSignUp, isOpen }) {
           className="modal__form-input"
           id="link"
           placeholder="Enter Url"
-          value={imageUrl} //pass 'imageUrl' to value to connect it to the 'imageUrl' state variable
-          onChange={handleImageUrlChange}
+          value={avatar} //pass 'imageUrl' to value to connect it to the 'imageUrl' state variable
+          onChange={handleAvatarChange}
         ></input>
       </label>
     </ModalWithForm>
