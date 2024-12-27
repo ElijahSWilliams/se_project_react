@@ -246,7 +246,7 @@ function App() {
           <RegisterModal
             handleCloseModal={closeActiveModal}
             handleOpenRegisterModal={handleOpenRegisterModal}
-            handleSignUp={signUp}
+            signUp={signUp}
             isOpen={activeModal === "register-modal"}
           />
         )}
@@ -255,6 +255,7 @@ function App() {
           <LoginModal
             handleCloseModal={closeActiveModal}
             handleOpenLogin={handleOpenLoginModal}
+            signIn={signIn}
             isOpen={activeModal === "login-modal"}
           />
         )}

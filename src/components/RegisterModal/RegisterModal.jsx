@@ -1,7 +1,6 @@
 import "./RegisterModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useEffect, useState } from "react";
-import { signUp } from "../../utils/AUTH";
 
 function RegisterModal({ handleCloseModal, signUp, isOpen }) {
   //State Variable for fields

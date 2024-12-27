@@ -1,7 +1,6 @@
 import "./LoginModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useEffect, useState } from "react";
-import { signIn } from "../../utils/AUTH";
 
 function LoginModal({ handleCloseModal, isOpen, signIn }) {
   //State Variable for name field

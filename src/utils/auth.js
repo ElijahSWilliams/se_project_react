@@ -5,6 +5,7 @@ const headers = {
 };
 
 function signUp({ name, avatar, email, password }) {
+  console.log("Signing Up");
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
@@ -18,6 +19,7 @@ function signUp({ name, avatar, email, password }) {
 
 function signIn({ email, password }) {
   //function takes email and password
+  console.log("Signing In");
   return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
