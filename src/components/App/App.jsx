@@ -149,6 +149,7 @@ function App() {
     };
   }, [activeModal]); //dependency array
 
+  //hook to check for a token on load
   useEffect(() => {
     const token = localStorage.getItem("jwt");
 
@@ -223,7 +224,7 @@ function App() {
               <Route
                 path="/profile"
                 element={
-                  <ProtectedRoute>
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
                     {/* Protect Profile Route  */}
                     <Profile
                       handleCardClick={handleCardClick}
