@@ -31,7 +31,7 @@ function App() {
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState("");
   //////////////////////////////////
   //Functions
   //AddButton Function
@@ -46,7 +46,6 @@ function App() {
   };
 
   const handleOpenRegisterModal = () => {
-    console.log("Sign up");
     setActiveModal("register-modal");
   };
 
@@ -162,6 +161,7 @@ function App() {
 
   //Registration Function
   const handleRegistration = (userData) => {
+    console.log("Handle Registration response");
     signUp(userData) //call signup function from auth.js
       .then((res) => {
         console.log("Registation Data:", res); /* Display data in console */
@@ -200,6 +200,7 @@ function App() {
               handleAddClick={handleAddClick}
               handleOpenLoginModal={handleOpenLoginModal}
               handleOpenRegisterModal={handleOpenRegisterModal}
+              handleRegistration={handleRegistration}
               weatherData={weatherData}
             />
             <Routes>
@@ -245,6 +246,7 @@ function App() {
           <RegisterModal
             handleCloseModal={closeActiveModal}
             handleOpenRegisterModal={handleOpenRegisterModal}
+            handleSignUp={signUp}
             isOpen={activeModal === "register-modal"}
           />
         )}

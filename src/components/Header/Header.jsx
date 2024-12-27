@@ -10,6 +10,7 @@ function Header({
   handleAddClick,
   handleOpenLoginModal,
   handleOpenRegisterModal,
+  handleRegistration,
   weatherData,
 }) {
   const currentDate = new Date().toLocaleString("default", {
@@ -37,27 +38,37 @@ function Header({
         {currentDate}, {weatherData.city}
       </p>
       <ToggleSwitch />
-      <button
-        type="button"
-        onClick={handleAddClick}
-        className="header__add-clothes-btn"
-      >
-        + Add Clothes
-      </button>
-      <button
-        type="button"
-        onClick={handleOpenRegisterModal}
-        className="header__add-clothes-btn"
-      >
-        Sign Up
-      </button>
-      <button
-        type="button"
-        onClick={handleOpenLoginModal}
-        className="header__add-clothes-btn"
-      >
-        Log In
-      </button>
+      {!currentUser ? (
+        //If no user, render Log In and Sign Up buttons
+        <>
+          <button
+            type="button"
+            onClick={handleOpenRegisterModal}
+            className="header__add-clothes-btn"
+          >
+            Sign Up
+          </button>
+          <button
+            type="button"
+            onClick={handleOpenLoginModal}
+            className="header__add-clothes-btn"
+          >
+            Log In
+          </button>
+        </>
+      ) : (
+        //If there is a currentUser, render Add CLothes, and Profile Info
+        <>
+          <button
+            type="button"
+            onClick={handleAddClick}
+            className="header__add-clothes-btn"
+          >
+            + Add Clothes
+          </button>
+        </>
+      )}
+
       <Link to="/profile" className="header__link">
         <div className="header__user-container">
           <p className="header__username">{currentUser}</p>

@@ -34,7 +34,7 @@ function LoginModal({ handleCloseModal, isOpen }) {
   return (
     <ModalWithForm
       title="Login"
-      buttonText="SUBMITTT"
+      buttonText="Log In"
       isOpen={isOpen}
       handleCloseModal={handleCloseModal} //set destructed value in component to the close modal function
       onSubmit={handleSubmit}

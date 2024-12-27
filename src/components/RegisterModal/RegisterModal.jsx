@@ -1,8 +1,9 @@
 import "./RegisterModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useEffect, useState } from "react";
+import { signUp } from "../../utils/AUTH";
 
-function RegisterModal({ handleCloseModal, isOpen, onAddItem }) {
+function RegisterModal({ handleCloseModal, handleSignUp, isOpen }) {
   //State Variable for fields
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -31,7 +32,7 @@ function RegisterModal({ handleCloseModal, isOpen, onAddItem }) {
     console.log("ImageUrl:", imageUrl);
     console.log("Name:", name);
     console.log("password:", password);
-    onAddItem({ name, email, imageUrl, password }); //pass information to submit function
+    signUp({ name, email, imageUrl, password }); //pass information to submit function
   };
 
   return (
