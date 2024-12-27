@@ -13,14 +13,14 @@ export function ProtectedRoute({ children, anonymous = false }) {
 
   // If the user is logged in we redirect them away from our
   // anonymous routes.
-  if (anonymous && isLoggedIn) {
+  if (!anonymous && isLoggedIn) {
     return <Navigate to={from} />;
   }
 
   // If a user is not logged in and tries to access a route that
   // requires authorization, we redirect them to the /signin route.
-  if (!anonymous && !isLoggedIn) {
-    return <Navigate to="/signin" state={{ from: location }} />;
+  if (anonymous && !isLoggedIn) {
+    return <Navigate to="/" state={{ from: location }} />;
   }
 
   //otherwise, display children of current route

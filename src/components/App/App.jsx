@@ -201,7 +201,7 @@ function App() {
         value={{ currentTempUnit, handleToggleUnit }}
       >
         <div className="page__content">
-          <CurrentUserContext.Provider value={currentUser}>
+          <CurrentUserContext.Provider value={{ currentUser, isLoggedIn }}>
             <Header
               handleAddClick={handleAddClick}
               handleOpenLoginModal={handleOpenLoginModal}
@@ -224,7 +224,7 @@ function App() {
               <Route
                 path="/profile"
                 element={
-                  <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <ProtectedRoute anonymous={true}>
                     {/* Protect Profile Route  */}
                     <Profile
                       handleCardClick={handleCardClick}
