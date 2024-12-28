@@ -11,12 +11,6 @@ export function ProtectedRoute({ children, anonymous = false }) {
   //retrieve isLoggedIN from CurrentUserContext Value
   const { isLoggedIn } = useContext(CurrentUserContext);
 
-  // If the user is logged in we redirect them away from our
-  // anonymous routes.
-  if (anonymous && isLoggedIn) {
-    return <Navigate to={from} />;
-  }
-
   // If a user is not logged in and tries to access a route that
   // requires authorization, we redirect them to the /signin route.
   if (anonymous && !isLoggedIn) {

@@ -2,9 +2,18 @@
   display: flex;
   max-width: 229px;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .sidebar-profile__image {
   margin-bottom: auto;
   margin-right: 16px;
+}
+
+.sidebar__header {
+  display: flex;
+}
+
+.sidebar__actions {
+  display: flex;
 }

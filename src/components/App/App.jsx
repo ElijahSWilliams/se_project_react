@@ -32,6 +32,8 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
+  //Global Vars
+  const navigate = useNavigate(); //call useNavigate to get the navigate function
   //////////////////////////////////
   //Functions
   //AddButton Function
@@ -177,8 +179,6 @@ function App() {
         console.error(err);
       });
   };
-
-  const navigate = useNavigate(); //call useNavigate to get the navigate function
 
   //Authorization Function
   const handleLogIn = (userData) => {
