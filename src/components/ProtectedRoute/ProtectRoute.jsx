@@ -13,7 +13,7 @@ export function ProtectedRoute({ children, anonymous = false }) {
 
   // If the user is logged in we redirect them away from our
   // anonymous routes.
-  if (!anonymous && isLoggedIn) {
+  if (anonymous && isLoggedIn) {
     return <Navigate to={from} />;
   }
 

@@ -178,10 +178,11 @@ function App() {
       });
   };
 
+  const navigate = useNavigate(); //call useNavigate to get the navigate function
+
   //Authorization Function
   const handleLogIn = (userData) => {
     console.log("HandleLogin Response");
-    const navigate = useNavigate(); //call useNavigate to get the navigate function
 
     signIn(userData) //call signIn function from auth.js
       .then((res) => {

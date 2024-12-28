@@ -19,7 +19,7 @@ function Header({
   });
   /*   console.log(weatherData.main); */
 
-  const currentUser = useContext(CurrentUserContext); //retrieve user context
+  const { currentUser } = useContext(CurrentUserContext); //retrieve user context
 
   //Extract Context
   const { name, avatar } = currentUser || {}; //empty object in case currentUser in empty. This will create an undefined error instead of a Type error
