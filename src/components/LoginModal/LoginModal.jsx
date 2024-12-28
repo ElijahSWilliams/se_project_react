@@ -30,6 +30,7 @@ function LoginModal({ handleCloseModal, handleLogIn, isOpen }) {
     console.log("password:", password);
     /*  console.log("ImageUrl:", imageUrl); */
     handleLogIn({ email, password });
+    handleCloseModal();
   };
 
   return (
