@@ -18,6 +18,7 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import { checkToken, signIn, signUp } from "../../utils/AUTH";
 import { useNavigate } from "react-router-dom";
 import LoginModal from "../LoginModal/LoginModal";
+import ClothesSection from "../ClothesSection/ClothesSection";
 
 function App() {
   //State Variables
@@ -212,6 +213,7 @@ function App() {
               handleRegistration={handleRegistration}
               weatherData={weatherData}
             />
+
             <Routes>
               <Route
                 path="/"
