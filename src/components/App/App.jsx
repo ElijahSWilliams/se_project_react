@@ -202,7 +202,9 @@ function App() {
         value={{ currentTempUnit, handleToggleUnit }}
       >
         <div className="page__content">
-          <CurrentUserContext.Provider value={{ currentUser, isLoggedIn }}>
+          <CurrentUserContext.Provider
+            value={{ currentUser, isLoggedIn, setIsLoggedIn }}
+          >
             <Header
               handleAddClick={handleAddClick}
               handleOpenLoginModal={handleOpenLoginModal}
