@@ -28,11 +28,11 @@ function EditProfileModal({ handleCloseModal, handleUpdateUserInfo, isOpen }) {
     };
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e, token) => {
     e.preventDefault();
     console.log("Name:", name);
     console.log("Avatar:", avatar);
-    handleUpdateUserInfo(name, avatar);
+    handleUpdateUserInfo({ name, avatar }, token);
     handleCloseModal();
   };
 
