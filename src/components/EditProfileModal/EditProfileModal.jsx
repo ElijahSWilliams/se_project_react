@@ -1,11 +1,14 @@
 import "./EditProfileModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import CurrentUserContext from "../../Context/CurrentUserContext";
 
 function EditProfileModal({ handleCloseModal, isOpen }) {
   //State Variable for name field
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
+
+  const { currentUser } = useContext(CurrentUserContext);
 
   const handleNameChange = (e) => {
     //pass 'e' to capture form data

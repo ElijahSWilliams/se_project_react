@@ -210,13 +210,13 @@ function App() {
 
   return (
     <div className="page">
-      <CurrentTempUnitContext.Provider
-        value={{ currentTempUnit, handleToggleUnit }}
+      <CurrentUserContext.Provider
+        value={{ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn }}
       >
-        <div className="page__content">
-          <CurrentUserContext.Provider
-            value={{ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn }}
-          >
+        <CurrentTempUnitContext.Provider
+          value={{ currentTempUnit, handleToggleUnit }}
+        >
+          <div className="page__content">
             <Header
               handleAddClick={handleAddClick}
               handleOpenLoginModal={handleOpenLoginModal}
@@ -235,13 +235,11 @@ function App() {
                     clothingItems={clothingItems}
                   />
                 }
-              />{" "}
-              {/* End Main */}
+              />
               <Route
                 path="/profile"
                 element={
                   <ProtectedRoute anonymous={true}>
-                    {/* Protect Profile Route  */}
                     <Profile
                       handleCardClick={handleCardClick}
                       handleAddClick={handleAddClick}
@@ -251,53 +249,50 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              {/* End /profile */}
             </Routes>
-          </CurrentUserContext.Provider>
+          </div>
+
           <Footer />
-        </div>
-
-        {activeModal === "add-garment" && (
-          <AddItemModal
-            handleCloseModal={closeActiveModal}
-            isOpen={activeModal === "add-garment"}
-            onAddItem={onAddItem}
-          />
-        )}
-
-        {activeModal === "register-modal" && (
-          <RegisterModal
-            handleCloseModal={closeActiveModal}
-            handleOpenRegisterModal={handleOpenRegisterModal}
-            handleLogIn={handleLogIn}
-            isOpen={activeModal === "register-modal"}
-          />
-        )}
-
-        {activeModal === "login-modal" && (
-          <LoginModal
-            handleCloseModal={closeActiveModal}
-            handleOpenLogin={handleOpenLoginModal}
-            handleLogIn={handleLogIn}
-            isOpen={activeModal === "login-modal"}
-          />
-        )}
-
-        {activeModal === "edit-modal" && (
-          <EditProfileModal
-            handleCloseModal={closeActiveModal}
-            handleOpenEditModal={handleOpenEditModal}
-            isOpen={activeModal === "edit-modal"}
-          />
-        )}
-
-        <ItemModal
-          activeModal={activeModal}
-          card={selectedCard}
+        </CurrentTempUnitContext.Provider>{" "}
+        {/* Move closing tag for Temp Context here */}
+      </CurrentUserContext.Provider>{" "}
+      {/* Move closing tag for User Context here */}
+      {activeModal === "add-garment" && (
+        <AddItemModal
           handleCloseModal={closeActiveModal}
-          handleItemDelete={handleItemDelete}
+          isOpen={activeModal === "add-garment"}
+          onAddItem={onAddItem}
         />
-      </CurrentTempUnitContext.Provider>
+      )}
+      {activeModal === "register-modal" && (
+        <RegisterModal
+          handleCloseModal={closeActiveModal}
+          handleOpenRegisterModal={handleOpenRegisterModal}
+          handleLogIn={handleLogIn}
+          isOpen={activeModal === "register-modal"}
+        />
+      )}
+      {activeModal === "login-modal" && (
+        <LoginModal
+          handleCloseModal={closeActiveModal}
+          handleOpenLogin={handleOpenLoginModal}
+          handleLogIn={handleLogIn}
+          isOpen={activeModal === "login-modal"}
+        />
+      )}
+      {activeModal === "edit-modal" && (
+        <EditProfileModal
+          handleCloseModal={closeActiveModal}
+          handleOpenEditModal={handleOpenEditModal}
+          isOpen={activeModal === "edit-modal"}
+        />
+      )}
+      <ItemModal
+        activeModal={activeModal}
+        card={selectedCard}
+        handleCloseModal={closeActiveModal}
+        handleItemDelete={handleItemDelete}
+      />
     </div>
   );
 }
