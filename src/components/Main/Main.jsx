@@ -22,7 +22,6 @@ function Main({ weatherData, handleCardClick, clothingItems }) {
           {clothingItems
             .filter((item) => {
               //filter item based on weather type, hot cold etc.
-
               return item.weather === weatherData.type; //item.weather should equal weatherData.type value
             })
             .reverse() //reverse order of cards to display new cards first

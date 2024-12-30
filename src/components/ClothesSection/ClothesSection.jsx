@@ -13,7 +13,7 @@ function ClothesSection({ handleCardClick, handleAddClick, clothingItems }) {
   const userItems = clothingItems.filter(
     (item) => item.owner._id === currentUser._id
   );
-  console.log(userItems);
+  console.log({ userItems });
   ///////
   return (
     <div className="clothes-section">

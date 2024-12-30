@@ -10,21 +10,19 @@ function Header({
   handleAddClick,
   handleOpenLoginModal,
   handleOpenRegisterModal,
-  handleRegistration,
   weatherData,
 }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
-  /*   console.log(weatherData.main); */
 
   const { currentUser } = useContext(CurrentUserContext); //retrieve user context
   console.log({ currentUser });
 
   //Extract Context
   const { name, avatar } = currentUser || {}; //empty object in case currentUser in empty. This will create an undefined error instead of a Type error
-
+  const { isLoggedIn } = currentUser;
   //if there is a name but no avatar, get FirstLetter and set to uppercase, otherwise display 'User Info missing'
   const firstLetter = !avatar && name ? name.charAt(0).toUpperCase() : "";
 
@@ -66,22 +64,25 @@ function Header({
           >
             + Add Clothes
           </button>
+          <Link to="/profile" className="header__link">
+            <div className="header__user-container">
+              <p className="header__username">{currentUser.name}</p>
+              {/* If Avatar is Provided */}
+              {avatar ? (
+                <img
+                  className="header__avatar"
+                  src={avatar}
+                  alt="User Image"
+                ></img> //Render Avatar
+              ) : (
+                /* If Avatar Not Provided */
+                <div className="placeholder__image">{firstLetter}</div> //Render FirstLetter of Username
+              )}{" "}
+              {/* End Avatar Conditional Statement */}
+            </div>
+          </Link>
         </>
       )}
-
-      <Link to="/profile" className="header__link">
-        <div className="header__user-container">
-          <p className="header__username">{currentUser.name}</p>
-          {/* If Avatar is Provided */}
-          {avatar ? (
-            <img className="header__avatar" src={avatar} alt="User Image"></img> //Render Avatar
-          ) : (
-            /* If Avatar Not Provided */
-            <div className="placeholder__image">{firstLetter}</div> //Render FirstLetter of Username
-          )}{" "}
-          {/* End Avatar Conditional Statement */}
-        </div>
-      </Link>
     </header>
   );
 }

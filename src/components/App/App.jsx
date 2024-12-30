@@ -188,9 +188,15 @@ function App() {
     signIn(userData) //call signIn function from auth.js
       .then((res) => {
         console.log(res);
+        console.log(userData);
         setIsLoggedIn(true); /* Log user in */
-        localStorage.setItem("jwt", res.token); //Stores the jwt to localoStorage
-        navigate("/profile"); /* Navigate user to profile */
+        localStorage.setItem("jwt", res.token); //Stores the jwt to localStorage
+        return checkToken(res.token).then((user) => {
+          //call checkToken to get userData
+          console.log(user);
+          setCurrentUser(user); //set User Data
+          navigate("/profile"); /* Navigate user to profile */
+        });
       })
       .catch((err) => {
         console.error(err);
