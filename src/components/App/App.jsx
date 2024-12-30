@@ -253,46 +253,46 @@ function App() {
           </div>
 
           <Footer />
+          {activeModal === "add-garment" && (
+            <AddItemModal
+              handleCloseModal={closeActiveModal}
+              isOpen={activeModal === "add-garment"}
+              onAddItem={onAddItem}
+            />
+          )}
+          {activeModal === "register-modal" && (
+            <RegisterModal
+              handleCloseModal={closeActiveModal}
+              handleOpenRegisterModal={handleOpenRegisterModal}
+              handleLogIn={handleLogIn}
+              isOpen={activeModal === "register-modal"}
+            />
+          )}
+          {activeModal === "login-modal" && (
+            <LoginModal
+              handleCloseModal={closeActiveModal}
+              handleOpenLogin={handleOpenLoginModal}
+              handleLogIn={handleLogIn}
+              isOpen={activeModal === "login-modal"}
+            />
+          )}
+          {activeModal === "edit-modal" && (
+            <EditProfileModal
+              handleCloseModal={closeActiveModal}
+              handleOpenEditModal={handleOpenEditModal}
+              isOpen={activeModal === "edit-modal"}
+            />
+          )}
+          <ItemModal
+            activeModal={activeModal}
+            card={selectedCard}
+            handleCloseModal={closeActiveModal}
+            handleItemDelete={handleItemDelete}
+          />
         </CurrentTempUnitContext.Provider>{" "}
         {/* Move closing tag for Temp Context here */}
       </CurrentUserContext.Provider>{" "}
       {/* Move closing tag for User Context here */}
-      {activeModal === "add-garment" && (
-        <AddItemModal
-          handleCloseModal={closeActiveModal}
-          isOpen={activeModal === "add-garment"}
-          onAddItem={onAddItem}
-        />
-      )}
-      {activeModal === "register-modal" && (
-        <RegisterModal
-          handleCloseModal={closeActiveModal}
-          handleOpenRegisterModal={handleOpenRegisterModal}
-          handleLogIn={handleLogIn}
-          isOpen={activeModal === "register-modal"}
-        />
-      )}
-      {activeModal === "login-modal" && (
-        <LoginModal
-          handleCloseModal={closeActiveModal}
-          handleOpenLogin={handleOpenLoginModal}
-          handleLogIn={handleLogIn}
-          isOpen={activeModal === "login-modal"}
-        />
-      )}
-      {activeModal === "edit-modal" && (
-        <EditProfileModal
-          handleCloseModal={closeActiveModal}
-          handleOpenEditModal={handleOpenEditModal}
-          isOpen={activeModal === "edit-modal"}
-        />
-      )}
-      <ItemModal
-        activeModal={activeModal}
-        card={selectedCard}
-        handleCloseModal={closeActiveModal}
-        handleItemDelete={handleItemDelete}
-      />
     </div>
   );
 }
