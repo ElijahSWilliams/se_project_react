@@ -191,8 +191,8 @@ function App() {
         console.log(userData);
         setIsLoggedIn(true); /* Log user in */
         localStorage.setItem("jwt", res.token); //Stores the jwt to localStorage
+        //call checkToken to get userData
         return checkToken(res.token).then((user) => {
-          //call checkToken to get userData
           console.log(user);
           setCurrentUser(user); //set User Data
           navigate("/profile"); /* Navigate user to profile */
@@ -210,7 +210,7 @@ function App() {
       >
         <div className="page__content">
           <CurrentUserContext.Provider
-            value={{ currentUser, isLoggedIn, setIsLoggedIn }}
+            value={{ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn }}
           >
             <Header
               handleAddClick={handleAddClick}

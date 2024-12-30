@@ -22,7 +22,7 @@ function Header({
 
   //Extract Context
   const { name, avatar } = currentUser || {}; //empty object in case currentUser in empty. This will create an undefined error instead of a Type error
-  const { isLoggedIn } = currentUser;
+
   //if there is a name but no avatar, get FirstLetter and set to uppercase, otherwise display 'User Info missing'
   const firstLetter = !avatar && name ? name.charAt(0).toUpperCase() : "";
 

@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 function SideBar() {
   //Subscribe to CurrentUserContext
   const { currentUser } = useContext(CurrentUserContext);
-  const { isLoggedIn, setIsLoggedIn } = useContext(CurrentUserContext);
+  const { setIsLoggedIn } = useContext(CurrentUserContext);
+  const { setCurrentUser } = useContext(CurrentUserContext);
   const navigate = useNavigate();
 
   //functions
@@ -15,8 +16,10 @@ function SideBar() {
     console.log("Logging Out"); //console log for debugging
     localStorage.removeItem("jwt"); //clear token from local storage to log them out
     setIsLoggedIn(false); //update state to false on log out
+    setCurrentUser(null);
     navigate("/"); //navigate user back to home/root page
   };
+
   return (
     <div className="sidebar">
       <div className="sidebar__header">
