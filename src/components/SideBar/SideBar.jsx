@@ -4,7 +4,7 @@ import { useContext } from "react";
 import CurrentUserContext from "../../Context/CurrentUserContext";
 import { useNavigate } from "react-router-dom";
 
-function SideBar() {
+function SideBar({ handleOpenEditModal }) {
   //Subscribe to CurrentUserContext
   const { currentUser } = useContext(CurrentUserContext);
   const { setIsLoggedIn } = useContext(CurrentUserContext);
@@ -32,7 +32,9 @@ function SideBar() {
       </div>
 
       <div className="sidebar__actions">
-        <p className="sidebar__action">Edit Profile</p>
+        <p className="sidebar__action" onClick={handleOpenEditModal}>
+          Edit Profile
+        </p>
         <p className="sidebar__action" onClick={handleLogout}>
           Log Out
         </p>

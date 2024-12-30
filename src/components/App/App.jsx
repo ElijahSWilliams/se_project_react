@@ -18,6 +18,7 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import { checkToken, signIn, signUp } from "../../utils/AUTH";
 import { useNavigate } from "react-router-dom";
 import LoginModal from "../LoginModal/LoginModal";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import ClothesSection from "../ClothesSection/ClothesSection";
 
 function App() {
@@ -50,6 +51,10 @@ function App() {
 
   const handleOpenRegisterModal = () => {
     setActiveModal("register-modal");
+  };
+
+  const handleOpenEditModal = () => {
+    setActiveModal("edit-modal");
   };
 
   //CLose modal function
@@ -241,6 +246,7 @@ function App() {
                       handleCardClick={handleCardClick}
                       handleAddClick={handleAddClick}
                       clothingItems={clothingItems}
+                      handleOpenEditModal={handleOpenEditModal}
                     />
                   </ProtectedRoute>
                 }
@@ -274,6 +280,14 @@ function App() {
             handleOpenLogin={handleOpenLoginModal}
             handleLogIn={handleLogIn}
             isOpen={activeModal === "login-modal"}
+          />
+        )}
+
+        {activeModal === "edit-modal" && (
+          <EditProfileModal
+            handleCloseModal={closeActiveModal}
+            handleOpenEditModal={handleOpenEditModal}
+            isOpen={activeModal === "edit-modal"}
           />
         )}
 
