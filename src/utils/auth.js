@@ -43,4 +43,18 @@ function checkToken(token) {
   });
 }
 
-export { signUp, signIn, checkToken };
+function sendNewUserData(userData, token) {
+  //function to update user Info
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(userData),
+  }).then((res) => {
+    return checkResponse(res);
+  });
+}
+
+export { signUp, signIn, checkToken, sendNewUserData };

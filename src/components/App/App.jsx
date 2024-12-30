@@ -19,6 +19,7 @@ import { checkToken, signIn, signUp } from "../../utils/AUTH";
 import { useNavigate } from "react-router-dom";
 import LoginModal from "../LoginModal/LoginModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
+import { sendNewUserData } from "../../utils/AUTH";
 import ClothesSection from "../ClothesSection/ClothesSection";
 
 function App() {
@@ -208,6 +209,17 @@ function App() {
       });
   };
 
+  const handleUpdateUserInfo = (userData, token) => {
+    console.log("Handle Update");
+    console.log(token);
+
+    //api call
+    sendNewUserData(userData, token).then((res) => {
+      console.log(res);
+      console.log(userData);
+    });
+  };
+
   return (
     <div className="page">
       <CurrentUserContext.Provider
@@ -280,6 +292,7 @@ function App() {
             <EditProfileModal
               handleCloseModal={closeActiveModal}
               handleOpenEditModal={handleOpenEditModal}
+              handleUpdateUserInfo={handleUpdateUserInfo}
               isOpen={activeModal === "edit-modal"}
             />
           )}

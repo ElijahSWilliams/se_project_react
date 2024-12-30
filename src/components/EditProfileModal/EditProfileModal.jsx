@@ -3,7 +3,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useContext, useEffect, useState } from "react";
 import CurrentUserContext from "../../Context/CurrentUserContext";
 
-function EditProfileModal({ handleCloseModal, isOpen }) {
+function EditProfileModal({ handleCloseModal, handleUpdateUserInfo, isOpen }) {
   //State Variable for name field
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
@@ -32,8 +32,7 @@ function EditProfileModal({ handleCloseModal, isOpen }) {
     e.preventDefault();
     console.log("Name:", name);
     console.log("Avatar:", avatar);
-    /*  console.log("ImageUrl:", imageUrl); */
-    /*  handleLogIn({ email, password }); */
+    handleUpdateUserInfo(name, avatar);
     handleCloseModal();
   };
 
