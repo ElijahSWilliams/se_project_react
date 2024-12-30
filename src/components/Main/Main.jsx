@@ -9,6 +9,7 @@ import { useContext } from "react";
 function Main({ weatherData, handleCardClick, clothingItems }) {
   const { currentTempUnit } = useContext(CurrentTempUnitContext);
   const tempVar = weatherData?.temperature?.[currentTempUnit] || 999;
+  console.log("ClothingItems in Main: ", { clothingItems });
 
   return (
     <main>
@@ -21,6 +22,7 @@ function Main({ weatherData, handleCardClick, clothingItems }) {
           {clothingItems
             .filter((item) => {
               //filter item based on weather type, hot cold etc.
+
               return item.weather === weatherData.type; //item.weather should equal weatherData.type value
             })
             .reverse() //reverse order of cards to display new cards first
