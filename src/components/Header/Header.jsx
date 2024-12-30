@@ -20,13 +20,13 @@ function Header({
   /*   console.log(weatherData.main); */
 
   const { currentUser } = useContext(CurrentUserContext); //retrieve user context
+  console.log({ currentUser });
 
   //Extract Context
   const { name, avatar } = currentUser || {}; //empty object in case currentUser in empty. This will create an undefined error instead of a Type error
 
   //if there is a name but no avatar, get FirstLetter and set to uppercase, otherwise display 'User Info missing'
-  const firstLetter =
-    !avatar && name ? name.charAt(0).toUpperCase() : "User Information Missing";
+  const firstLetter = !avatar && name ? name.charAt(0).toUpperCase() : "";
 
   return (
     <header className="header">

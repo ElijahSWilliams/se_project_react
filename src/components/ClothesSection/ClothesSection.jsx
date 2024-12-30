@@ -11,7 +11,7 @@ function ClothesSection({ handleCardClick, handleAddClick, clothingItems }) {
   //filter items based on ownership
   //compare user items by userid and itemownerId
   const userItems = clothingItems.filter(
-    (item) => item._id === currentUser._id
+    (item) => item.owner._id === currentUser._id
   );
   console.log(userItems);
   ///////

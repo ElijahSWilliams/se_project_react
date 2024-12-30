@@ -84,7 +84,7 @@ function App() {
 
   //useEffect to log updated clothingItems
   useEffect(() => {
-    console.log(clothingItems);
+    console.log("clothingItems:", clothingItems);
   }, [clothingItems]);
 
   const handleItemDelete = (item) => {
