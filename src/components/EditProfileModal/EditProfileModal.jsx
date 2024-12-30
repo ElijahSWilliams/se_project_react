@@ -9,6 +9,7 @@ function EditProfileModal({ handleCloseModal, isOpen }) {
   const [avatar, setAvatar] = useState("");
 
   const { currentUser } = useContext(CurrentUserContext);
+  console.log(currentUser);
 
   const handleNameChange = (e) => {
     //pass 'e' to capture form data
@@ -18,12 +19,12 @@ function EditProfileModal({ handleCloseModal, isOpen }) {
     setAvatar(e.target.value);
   };
 
-  //useEffect hook to clear inputs during mount
+  //useEffect hook to set inputs during mount
   useEffect(() => {
     return () => {
-      //get state of each input and set to empty string
-      setName("");
-      setAvatar("");
+      //get state of each input and set to user info
+      setName(currentUser.name);
+      setAvatar(currentUser.avatar);
     };
   }, []);
 
