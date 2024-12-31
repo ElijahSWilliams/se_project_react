@@ -28,10 +28,11 @@ function EditProfileModal({ handleCloseModal, handleUpdateUserInfo, isOpen }) {
     };
   }, []);
 
-  const handleSubmit = (e, token) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Name:", name);
     console.log("Avatar:", avatar);
+    const token = localStorage.getItem("jwt");
     handleUpdateUserInfo({ name, avatar }, token);
     handleCloseModal();
   };

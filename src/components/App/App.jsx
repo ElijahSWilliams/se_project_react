@@ -223,7 +223,12 @@ function App() {
   return (
     <div className="page">
       <CurrentUserContext.Provider
-        value={{ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn }}
+        value={{
+          currentUser,
+          setCurrentUser,
+          isLoggedIn,
+          setIsLoggedIn,
+        }}
       >
         <CurrentTempUnitContext.Provider
           value={{ currentTempUnit, handleToggleUnit }}
