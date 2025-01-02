@@ -24,6 +24,10 @@ function ItemModal({ activeModal, card, handleCloseModal, handleItemDelete }) {
           src={card.imageUrl}
           className="modal__image"
           alt="card Image"
+          onError={(e) => {
+            e.target.src =
+              "https://cdn-icons-png.flaticon.com/512/57/57950.png";
+          }}
         ></img>
         <div className="modal__footer">
           <h2 className="modal__caption">{card.name}</h2>

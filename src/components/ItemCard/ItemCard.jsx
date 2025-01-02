@@ -33,6 +33,9 @@ function ItemCard({ item, onCardClick, onCardLike }) {
         alt={item.name}
         className="card__image"
         onClick={handleCardClick}
+        onError={(e) => {
+          e.target.src = "https://cdn-icons-png.flaticon.com/512/57/57950.png";
+        }}
       />
       <button className={itemButtonClassName} onClick={handleLike}></button>
     </li>
