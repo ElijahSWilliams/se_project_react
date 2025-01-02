@@ -5,7 +5,12 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import CurrentUserContext from "../../Context/CurrentUserContext";
 import { useContext } from "react";
 
-function ClothesSection({ handleCardClick, handleAddClick, clothingItems }) {
+function ClothesSection({
+  handleCardClick,
+  handleAddClick,
+  clothingItems,
+  onCardLike,
+}) {
   const currentUser = useContext(CurrentUserContext);
 
   //filter items based on ownership
@@ -33,6 +38,7 @@ function ClothesSection({ handleCardClick, handleAddClick, clothingItems }) {
                 key={item._id}
                 item={item}
                 onCardClick={handleCardClick} //passed from App componenet to Main Then to ItemCard while renaming to 'onCardClick'
+                onCardLike={onCardLike}
               />
             );
           })}

@@ -6,9 +6,10 @@ function ItemCard({ item, onCardClick, onCardLike }) {
   };
 
   const handleLike = () => {
-    onCardLike(item);
+    onCardLike({ item });
   };
 
+  console.log(item._id);
   return (
     <li className="card">
       <h2 className="card__name">{item.name}</h2>
@@ -18,6 +19,7 @@ function ItemCard({ item, onCardClick, onCardLike }) {
         className="card__image"
         onClick={handleCardClick}
       />
+      <button className="card__like-button" onClick={handleLike}></button>
     </li>
   );
 }

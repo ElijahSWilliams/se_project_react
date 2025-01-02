@@ -26,4 +26,14 @@
 
 .card__image {
   width: 100%;
+  height: auto;
+}
+
+.card__like-button {
+  background: transparent;
+  background-image: none;
+  background-image: url("../../assets/defaultLikeButton.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
 }

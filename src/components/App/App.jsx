@@ -41,6 +41,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
+  const [isLiked, setIsLiked] = useState("");
   //Global Vars
   const navigate = useNavigate(); //call useNavigate to get the navigate function
   //////////////////////////////////
@@ -229,12 +230,15 @@ function App() {
 
   const handleCardLike = ({ id, isLiked }) => {
     const token = localStorage.getItem("jwt");
+    console.log(token);
+    console.log(isLiked);
+    console.log(id);
     // Check if this card is not currently liked
     !isLiked
       ? // if so, send a request to add the user's id to the card's likes array
-        api
-          // the first argument is the card's id
-          .addCardLike(id, token)
+
+        // the first argument is the card's id
+        addCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
               cards.map((item) => (item._id === id ? updatedCard : item))
@@ -242,9 +246,9 @@ function App() {
           })
           .catch((err) => console.log(err))
       : // if not, send a request to remove the user's id from the card's likes array
-        api
-          // the first argument is the card's id
-          .removeCardLike(id, token)
+
+        // the first argument is the card's id
+        removeCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
               cards.map((item) => (item._id === id ? updatedCard : item))
@@ -283,6 +287,7 @@ function App() {
                     weatherData={weatherData}
                     handleCardClick={handleCardClick}
                     clothingItems={clothingItems}
+                    onCardLike={handleCardLike}
                   />
                 }
               />
@@ -295,6 +300,7 @@ function App() {
                       handleAddClick={handleAddClick}
                       clothingItems={clothingItems}
                       handleOpenEditModal={handleOpenEditModal}
+                      onCardLike={handleCardLike}
                     />
                   </ProtectedRoute>
                 }
