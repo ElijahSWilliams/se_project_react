@@ -41,7 +41,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
-  const [isLiked, setIsLiked] = useState("");
+
   //Global Vars
   const navigate = useNavigate(); //call useNavigate to get the navigate function
   //////////////////////////////////
@@ -230,8 +230,6 @@ function App() {
 
   const handleCardLike = ({ id, isLiked }) => {
     const token = localStorage.getItem("jwt");
-    console.log(token);
-    console.log(isLiked);
     console.log(id);
     // Check if this card is not currently liked
     !isLiked

@@ -16,7 +16,7 @@ function ClothesSection({
   //filter items based on ownership
   //compare user items by userid and itemownerId
   const userItems = clothingItems.filter(
-    (item) => item.owner._id === currentUser._id
+    (item) => item.owner === currentUser._id
   );
   console.log({ userItems });
   ///////

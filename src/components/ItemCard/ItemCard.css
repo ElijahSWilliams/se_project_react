@@ -30,10 +30,19 @@
 }
 
 .card__like-button {
+  /* default/unliked card style */
   background: transparent;
   background-image: none;
   background-image: url("../../assets/defaultLikeButton.svg");
   background-size: cover;
   background-repeat: no-repeat;
   border: none;
+}
+
+.card__like-button-active {
+  background-color: black;
+}
+
+.card__hidden {
+  display: none;
 }
