@@ -40,7 +40,8 @@ function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
     console.log("name:", name);
     console.log("ImageUrl:", imageUrl);
     console.log("Weather:", radioValue);
-    onAddItem({ name, imageUrl, radioValue });
+    const token = localStorage.getItem("jwt");
+    onAddItem({ name, imageUrl, radioValue }, token);
   };
 
   return (

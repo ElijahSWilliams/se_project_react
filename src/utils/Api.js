@@ -49,4 +49,28 @@ function removeItem(id, token) {
   });
 }
 
-export { getItems, addItem, removeItem };
+function addCardLike(id, token) {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then((res) => {
+    return checkResponse(res);
+  });
+}
+
+function removeCardLike(id, token) {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then((res) => {
+    return checkResponse(res);
+  });
+}
+
+export { getItems, addItem, removeItem, addCardLike, removeCardLike };

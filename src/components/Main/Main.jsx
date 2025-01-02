@@ -6,7 +6,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import CurrentTempUnitContext from "../../Context/CurrentTemperatureUnitContext";
 import { useContext } from "react";
 
-function Main({ weatherData, handleCardClick, clothingItems }) {
+function Main({ weatherData, handleCardClick, clothingItems, onCardLike }) {
   const { currentTempUnit } = useContext(CurrentTempUnitContext);
   const tempVar = weatherData?.temperature?.[currentTempUnit] || 999;
   console.log("ClothingItems in Main: ", { clothingItems });
@@ -31,6 +31,7 @@ function Main({ weatherData, handleCardClick, clothingItems }) {
                   key={item._id}
                   item={item}
                   onCardClick={handleCardClick} //passed from App componenet to Main Then to ItemCard while renaming to 'onCardClick'
+                  onCardLike={onCardLike}
                 />
               );
             })}
