@@ -36,6 +36,13 @@
   color: black;
 }
 
+.header__default-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  border: 1px;
+}
+
 .placeholder__image {
 }
 
