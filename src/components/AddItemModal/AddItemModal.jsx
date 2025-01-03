@@ -41,6 +41,7 @@ function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
     console.log("ImageUrl:", imageUrl);
     console.log("Weather:", radioValue);
     const token = localStorage.getItem("jwt");
+    console.log(token);
     onAddItem({ name, imageUrl, radioValue }, token);
   };
 

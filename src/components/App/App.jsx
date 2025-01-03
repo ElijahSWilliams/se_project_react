@@ -83,7 +83,7 @@ function App() {
   //handleFormSubmit function
   const onAddItem = (values, token) => {
     //api call
-    addItem(values)
+    addItem(values, token)
       .then((newItem) => {
         console.log(newItem);
         setClothingItems((prevItems) => [...prevItems, newItem]); //update state from server
