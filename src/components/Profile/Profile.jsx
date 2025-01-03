@@ -1,6 +1,7 @@
 import ClothesSection from "../ClothesSection/ClothesSection";
 import SideBar from "../SideBar/SideBar";
 import "./Profile.css";
+import { useEffect } from "react";
 
 function Profile({
   handleCardClick,
@@ -9,6 +10,10 @@ function Profile({
   clothingItems,
   onCardLike,
 }) {
+  useEffect(() => {
+    console.log("clothingItems:", clothingItems);
+  }, [clothingItems]);
+
   return (
     <div className="profile">
       <section className="profile__sidebar">

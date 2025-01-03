@@ -4,6 +4,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import CurrentUserContext from "../../Context/CurrentUserContext";
 import { useContext } from "react";
+import { useEffect } from "react";
 
 function ClothesSection({
   handleCardClick,
@@ -11,14 +12,20 @@ function ClothesSection({
   clothingItems,
   onCardLike,
 }) {
-  const currentUser = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
+  console.log(currentUser);
 
   //filter items based on ownership
   //compare user items by userid and itemownerId
-  const userItems = clothingItems.filter(
-    (item) => item.owner === currentUser._id
-  );
-  console.log({ userItems });
+  const userItems = clothingItems.filter((item) => {
+    item.owner === currentUser._id;
+  });
+  console.log(userItems);
+
+  useEffect(() => {
+    console.log("clothingItems:", clothingItems);
+  }, [clothingItems]);
+
   ///////
   return (
     <div className="clothes-section">
@@ -28,7 +35,7 @@ function ClothesSection({
           + Add New
         </button>
       </div>
-      <ul className="clothes-section__list">
+      <div className="clothes-section__list">
         {userItems
           .slice() // create shallow copy of array
           .reverse() //reverse array order
@@ -42,7 +49,7 @@ function ClothesSection({
               />
             );
           })}
-      </ul>
+      </div>
     </div>
   );
 }
