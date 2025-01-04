@@ -241,13 +241,17 @@ function App() {
       ? // if so, send a request to add the user's id to the card's likes array
 
         // the first argument is the card's id
-        addCardLike(id, token)
+        addCardLike(id, token) //call api
           .then((updatedCard) => {
+            //then with updatedCards
             console.log(updatedCard);
             setClothingItems((cards) => {
+              //update ClothingItems array state
               console.log("UpdatedCard:", updatedCard);
-              return cards.map((item) =>
-                item._id === id ? updatedCard.item : item
+              return cards.map(
+                (
+                  item //for each card,
+                ) => (item._id === id ? updatedCard.item : item) //check if item id matches id, if so return updatedCArd.item, if not then return original item
               );
             });
           })
@@ -257,8 +261,9 @@ function App() {
         // the first argument is the card's id
         removeCardLike(id, token)
           .then((updatedCard) => {
-            setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard.item : item))
+            setClothingItems(
+              (cards) =>
+                cards.map((item) => (item._id === id ? updatedCard.item : item)) //if item._id === id then replace the card with UpdatedCard.item, otherwise don't alter the card
             );
           })
           .catch((err) => console.log(err));
