@@ -10,10 +10,6 @@ function Profile({
   clothingItems,
   onCardLike,
 }) {
-  useEffect(() => {
-    console.log("clothingItems:", clothingItems);
-  }, [clothingItems]);
-
   return (
     <div className="profile">
       <section className="profile__sidebar">

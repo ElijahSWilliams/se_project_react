@@ -16,15 +16,11 @@ function ClothesSection({
   console.log(currentUser);
 
   //filter items based on ownership
-  //compare user items by userid and itemownerId
+  //compare user items by userid and itemownerId to show only user added cards
   const userItems = clothingItems.filter((item) => {
     return item.owner === currentUser._id;
   });
   console.log(userItems);
-
-  useEffect(() => {
-    console.log("clothingItems:", clothingItems);
-  }, [clothingItems]);
 
   ///////
   return (

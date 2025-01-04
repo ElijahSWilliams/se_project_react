@@ -29,18 +29,31 @@
   height: auto;
 }
 
-.card__like-button {
+.card__unliked {
   /* default/unliked card style */
   background: transparent;
-  background-image: none;
   background-image: url("../../assets/defaultLikeButton.svg");
   background-size: cover;
   background-repeat: no-repeat;
   border: none;
+  position: absolute;
+  top: 21px;
+  left: 210px;
+  width: 18px;
+  height: 15px;
 }
 
-.card__like-button-active {
-  background-color: black;
+.card__liked {
+  background: transparent;
+  background-image: url("../../assets/likedbutton.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+  position: absolute;
+  top: 21px;
+  left: 210px;
+  width: 18px;
+  height: 15px;
 }
 
 .card__hidden {

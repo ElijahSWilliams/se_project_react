@@ -28,6 +28,7 @@ function ItemCard({ item, onCardClick, onCardLike }) {
   return (
     <li className="card">
       <h2 className="card__name">{item.name}</h2>
+      <button className={itemButtonClassName} onClick={handleLike}></button>
       <img
         src={item.imageUrl}
         alt={item.name}
@@ -37,7 +38,6 @@ function ItemCard({ item, onCardClick, onCardLike }) {
           e.target.src = "https://cdn-icons-png.flaticon.com/512/57/57950.png";
         }}
       />
-      <button className={itemButtonClassName} onClick={handleLike}></button>
     </li>
   );
 }
