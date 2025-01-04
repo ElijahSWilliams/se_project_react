@@ -4,11 +4,12 @@ import { useContext } from "react";
 
 function ItemCard({ item, onCardClick, onCardLike }) {
   const { currentUser } = useContext(CurrentUserContext); //subscribe to context
-
+  const { isLoggedIn } = useContext(CurrentUserContext);
   const isLiked = item.likes.some((id) => id === currentUser?._id); //check if card is liked by current user
   const isOwner = item.owner === currentUser?._id;
-  /*   console.log(item);
-  console.log(currentUser._id); */
+
+  console.log(currentUser);
+  console.log(isLoggedIn);
 
   const handleCardClick = () => {
     onCardClick(item);
@@ -20,8 +21,8 @@ function ItemCard({ item, onCardClick, onCardLike }) {
 
   //change appearance based on liked or unliked
   const itemButtonClassName =
-    //if card is not owned, hide card, the after that decide if card i liked or unliked with nested ternary operator
-    !isOwner ? "card__hidden" : isLiked ? "card__liked" : "card__unliked";
+    //if card is not owned, hide button, the after that decide if card i liked or unliked with nested ternary operator
+    !isLoggedIn ? "card__hidden" : isLiked ? "card__liked" : "card__unliked";
 
   return (
     <li className="card">
