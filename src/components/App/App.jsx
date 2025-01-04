@@ -189,6 +189,8 @@ function App() {
       .then((res) => {
         console.log("Registation Data:", res); /* Display data in console */
         setIsLoggedIn(true); /* Log user In */
+        setCurrentUser(userData);
+        console.log(isLoggedIn);
         closeActiveModal(); /* close modal Window */
       })
       .catch((err) => {
@@ -325,7 +327,7 @@ function App() {
             <RegisterModal
               handleCloseModal={closeActiveModal}
               handleOpenRegisterModal={handleOpenRegisterModal}
-              handleLogIn={handleLogIn}
+              handleRegistration={handleRegistration}
               isOpen={activeModal === "register-modal"}
             />
           )}

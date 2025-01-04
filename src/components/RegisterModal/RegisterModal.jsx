@@ -31,7 +31,7 @@ function RegisterModal({ handleCloseModal, handleRegistration, isOpen }) {
     console.log("ImageUrl:", avatar);
     console.log("Name:", name);
     console.log("password:", password);
-    /* handleRegistration({ name, email, avatar, password }) */ //pass information to submit function
+    handleRegistration({ name, email, avatar, password }); //pass information to submit function
   };
 
   return (
