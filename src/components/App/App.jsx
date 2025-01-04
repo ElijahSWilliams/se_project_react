@@ -103,8 +103,10 @@ function App() {
   const handleItemDelete = (item) => {
     console.log("deleting");
     console.log(item);
+
+    const token = localStorage.getItem("jwt"); //get token from local storage
     //make api call to delete card
-    removeItem(item._id)
+    removeItem(item._id, token)
       .then((data) => {
         console.log(data);
         //filter
@@ -238,9 +240,9 @@ function App() {
         // the first argument is the card's id
         addCardLike(id, token)
           .then((updatedCard) => {
-            setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
-            );
+            setClothingItems((cards) => {
+              cards.map((item) => (item._id === id ? updatedCard : item));
+            });
           })
           .catch((err) => console.log(err))
       : // if not, send a request to remove the user's id from the card's likes array

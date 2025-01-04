@@ -7,9 +7,6 @@ function ItemCard({ item, onCardClick, onCardLike }) {
 
   const isLiked = item.likes.some((id) => id === currentUser?._id); //check if card is liked by current user
   const isOwner = item.owner === currentUser?._id;
-  /*  console.log(isOwner);
-  console.log(currentUser);
-  console.log("Owner:", item.owner); */
 
   const handleCardClick = () => {
     onCardClick(item);
@@ -18,7 +15,6 @@ function ItemCard({ item, onCardClick, onCardLike }) {
   const handleLike = () => {
     onCardLike({ id: item._id, isLiked });
   };
-  /* console.log(isLiked); */
 
   //change appearance based on liked or unliked
   const itemButtonClassName =
