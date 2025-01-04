@@ -8,6 +8,9 @@
 .sidebar-profile__image {
   margin-bottom: auto;
   margin-right: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
 }
 
 .sidebar__header {

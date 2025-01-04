@@ -11,6 +11,9 @@ function SideBar({ handleOpenEditModal }) {
   const { setCurrentUser } = useContext(CurrentUserContext);
   const navigate = useNavigate();
 
+  console.log(currentUser);
+  console.log(currentUser.avatar);
+
   //functions
   const handleLogout = () => {
     console.log("Logging Out"); //console log for debugging
@@ -24,7 +27,7 @@ function SideBar({ handleOpenEditModal }) {
     <div className="sidebar">
       <div className="sidebar__header">
         <img
-          src={avatar}
+          src={currentUser.avatar}
           alt="profile image"
           className="sidebar-profile__image"
         />
