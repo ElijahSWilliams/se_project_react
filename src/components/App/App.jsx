@@ -233,6 +233,7 @@ function App() {
   const handleCardLike = ({ id, isLiked }) => {
     const token = localStorage.getItem("jwt");
     console.log(id);
+    console.log(clothingItems);
     // Check if this card is not currently liked
     !isLiked
       ? // if so, send a request to add the user's id to the card's likes array
@@ -240,8 +241,12 @@ function App() {
         // the first argument is the card's id
         addCardLike(id, token)
           .then((updatedCard) => {
+            console.log(updatedCard);
             setClothingItems((cards) => {
-              cards.map((item) => (item._id === id ? updatedCard : item));
+              console.log("LikedCard:", updatedCard);
+              return cards.map((item) =>
+                item._id === id ? updatedCard : item
+              );
             });
           })
           .catch((err) => console.log(err))

@@ -4,9 +4,10 @@ import "./ItemModal.css";
 
 function ItemModal({ activeModal, card, handleCloseModal, handleItemDelete }) {
   //Var
-  const { currentUser } = useContext(CurrentUserContext); //subscribe to user context get user from context
+  const currentUser = useContext(CurrentUserContext); //subscribe to user context get user from context
   const isOwned = currentUser._id === card.owner;
-  console.log("isOwned:", isOwned);
+  /*   console.log("isOwned:", isOwned); */
+  console.log(currentUser);
 
   //functions
   const deleteCard = () => {
