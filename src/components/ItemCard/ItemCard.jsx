@@ -21,7 +21,7 @@ function ItemCard({ item, onCardClick, onCardLike }) {
   //change appearance based on liked or unliked
   const itemButtonClassName =
     //if card is not owned, hide card, the after that decide if card i liked or unliked with nested ternary operator
-    !isOwner ? "" : isLiked ? "card__liked" : "card__unliked";
+    !isOwner ? "card__hidden" : isLiked ? "card__liked" : "card__unliked";
 
   return (
     <li className="card">
