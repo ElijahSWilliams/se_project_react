@@ -5,7 +5,7 @@ import "./ItemModal.css";
 function ItemModal({ activeModal, card, handleCloseModal, handleItemDelete }) {
   //Var
   const { currentUser } = useContext(CurrentUserContext); //subscribe to user context get user from context
-  const isOwned = currentUser?._id === card.owner; // '?' for optional chaining to avoid errors on log out
+  const isOwned = currentUser?._id === card.owner; // '?' for optional chaining to avoid errors on log out if no user is present
   console.log("card Owner:", card.owner);
   console.log("isOwned:", isOwned);
   console.log(currentUser);
