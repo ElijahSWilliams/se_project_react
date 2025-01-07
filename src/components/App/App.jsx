@@ -225,11 +225,15 @@ function App() {
     console.log(token);
 
     //api call
-    sendNewUserData(userData, token).then((res) => {
-      console.log(res);
-      console.log(userData);
-      setCurrentUser(userData);
-    });
+    sendNewUserData(userData, token)
+      .then((res) => {
+        console.log(res);
+        console.log(userData);
+        setCurrentUser(userData);
+      })
+      .then((res) => {
+        closeActiveModal();
+      });
   };
 
   const handleCardLike = ({ id, isLiked }) => {
