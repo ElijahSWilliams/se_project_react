@@ -62,6 +62,7 @@ function LoginModal({ handleCloseModal, handleLogIn, isOpen }) {
           onChange={handlePasswordChange}
         ></input>
       </label>
+      <button className="login__signup-button">Sign Up</button>
     </ModalWithForm>
   );
 }
