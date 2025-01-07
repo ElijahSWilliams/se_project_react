@@ -46,7 +46,7 @@ function RegisterModal({
   return (
     <ModalWithForm
       title="Sign Up"
-      buttonText="Sign Up"
+      buttonText="Sign up"
       isOpen={isOpen}
       handleCloseModal={handleCloseModal} //set destructed value in component to the close modal function
       onSubmit={handleSubmit}
@@ -103,7 +103,7 @@ function RegisterModal({
           handleOpenLoginModal();
         }}
       >
-        Login
+        or Login
       </button>
     </ModalWithForm>
   );
