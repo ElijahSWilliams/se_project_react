@@ -40,7 +40,7 @@ function App() {
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState("");
+  const [currentUser, setCurrentUser] = useState(null);
 
   //Global Vars
   const navigate = useNavigate(); //call useNavigate to get the navigate function
@@ -173,10 +173,14 @@ function App() {
 
     if (token) {
       console.log("token found:", token);
-      checkToken(token).then((userData) => {
-        setCurrentUser(userData);
-        setIsLoggedIn(true);
-      });
+      checkToken(token)
+        .then((userData) => {
+          setCurrentUser(userData);
+          setIsLoggedIn(true);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     } else if (!token) {
       console.log("No Token Found");
     }
@@ -224,7 +228,7 @@ function App() {
   };
 
   const handleUpdateUserInfo = (userData, token) => {
-    console.log("Handle Update");
+    console.log(userData);
     console.log(token);
 
     //api call
@@ -232,7 +236,12 @@ function App() {
       .then((res) => {
         console.log(res);
         console.log(userData);
-        setCurrentUser(userData);
+        //
+        const updatedUserData = {
+          ...userData,
+          _id: res._id || "", //Add id to the userdata or empty string if not found
+        };
+        setCurrentUser(updatedUserData);
       })
       .then((res) => {
         closeActiveModal();
