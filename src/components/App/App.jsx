@@ -238,10 +238,11 @@ function App() {
         console.log(userData);
         //
         const updatedUserData = {
-          ...userData,
+          //make new object to add id to userdata
+          ...userData, //spread operator to copy all properties of original userdata
           _id: res._id || "", //Add id to the userdata or empty string if not found
         };
-        setCurrentUser(updatedUserData);
+        setCurrentUser(updatedUserData); //set user with all properties including ids
       })
       .then((res) => {
         closeActiveModal();
