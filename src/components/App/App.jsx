@@ -246,6 +246,9 @@ function App() {
       })
       .then((res) => {
         closeActiveModal();
+      })
+      .catch((err) => {
+        console.error(err);
       });
   };
 

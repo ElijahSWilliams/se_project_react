@@ -44,7 +44,7 @@ function EditProfileModal({ handleCloseModal, handleUpdateUserInfo, isOpen }) {
       handleCloseModal={handleCloseModal} //set destructed value in component to the close modal function
       onSubmit={handleSubmit}
     >
-      <label htmlFor="email" className="modal__form-label">
+      <label htmlFor="name" className="modal__form-label">
         Name {""}
         <input
           type="name"
