@@ -339,6 +339,7 @@ function App() {
             <RegisterModal
               handleCloseModal={closeActiveModal}
               handleOpenRegisterModal={handleOpenRegisterModal}
+              handleOpenLogin={handleOpenLoginModal}
               handleRegistration={handleRegistration}
               isOpen={activeModal === "register-modal"}
             />

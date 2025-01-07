@@ -2,7 +2,12 @@ import "./RegisterModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useEffect, useState } from "react";
 
-function RegisterModal({ handleCloseModal, handleRegistration, isOpen }) {
+function RegisterModal({
+  handleCloseModal,
+  handleRegistration,
+  isOpen,
+  handleOpenLogin,
+}) {
   //State Variable for fields
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -34,10 +39,14 @@ function RegisterModal({ handleCloseModal, handleRegistration, isOpen }) {
     handleRegistration({ name, email, avatar, password }); //pass information to submit function
   };
 
+  const handleOpenLoginModal = () => {
+    handleOpenLogin();
+  };
+
   return (
     <ModalWithForm
-      title="Register"
-      buttonText="Register"
+      title="Sign Up"
+      buttonText="Sign Up"
       isOpen={isOpen}
       handleCloseModal={handleCloseModal} //set destructed value in component to the close modal function
       onSubmit={handleSubmit}
@@ -86,6 +95,16 @@ function RegisterModal({ handleCloseModal, handleRegistration, isOpen }) {
           onChange={handleAvatarChange}
         ></input>
       </label>
+      <button
+        className="modal__login"
+        type="button"
+        onClick={() => {
+          console.log("Loggin In");
+          handleOpenLoginModal();
+        }}
+      >
+        Login
+      </button>
     </ModalWithForm>
   );
 }

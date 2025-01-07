@@ -34,7 +34,6 @@ function EditProfileModal({ handleCloseModal, handleUpdateUserInfo, isOpen }) {
     console.log("Avatar:", avatar);
     const token = localStorage.getItem("jwt");
     handleUpdateUserInfo({ name, avatar }, token);
-    handleCloseModal();
   };
 
   return (
