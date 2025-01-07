@@ -2,7 +2,12 @@ import "./LoginModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useEffect, useState } from "react";
 
-function LoginModal({ handleCloseModal, handleLogIn, isOpen }) {
+function LoginModal({
+  handleCloseModal,
+  handleLogIn,
+  isOpen,
+  handleOpenRegisterModal,
+}) {
   //State Variable for name field
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,6 +18,10 @@ function LoginModal({ handleCloseModal, handleLogIn, isOpen }) {
   };
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+  };
+
+  const openRegisterModal = () => {
+    handleOpenRegisterModal();
   };
 
   //useEffect hook to clear inputs during mount
@@ -62,7 +71,16 @@ function LoginModal({ handleCloseModal, handleLogIn, isOpen }) {
           onChange={handlePasswordChange}
         ></input>
       </label>
-      <button className="login__signup-button">Sign Up</button>
+      <button
+        className="login__signup-button"
+        type="button"
+        onClick={() => {
+          console.log("Signing Up");
+          openRegisterModal();
+        }}
+      >
+        Sign Up
+      </button>
     </ModalWithForm>
   );
 }

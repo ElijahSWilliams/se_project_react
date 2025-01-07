@@ -361,6 +361,7 @@ function App() {
             <LoginModal
               handleCloseModal={closeActiveModal}
               handleOpenLogin={handleOpenLoginModal}
+              handleOpenRegisterModal={handleOpenRegisterModal}
               handleLogIn={handleLogIn}
               isOpen={activeModal === "login-modal"}
             />
