@@ -215,6 +215,9 @@ function App() {
           navigate("/profile"); /* Navigate user to profile */
         });
       })
+      .then((res) => {
+        closeActiveModal();
+      })
       .catch((err) => {
         console.error(err);
       });
